@@ -1,0 +1,17 @@
+@use "../abstracts/" as *;
+
+.resform{
+    @include flex($display: flex, $direction: row);
+    &__left{
+        &--bigshoes{
+            position: relative;
+            z-index: 1;
+        }
+        &--logo{
+            position: absolute;
+            z-index: 2;
+            top: pxToRem(80);
+            left: pxToRem(224);
+        }
+    }
+}
