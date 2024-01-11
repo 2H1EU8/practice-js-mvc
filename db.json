@@ -1,19 +1,40 @@
 {
-  "posts": [
+  "shoes": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "id": "#25421",
+      "brand": "Bressi Cooper",
+      "product": "adidas",
+      "category": "PayPal",
+      "status": true,
+      "amount": 10,
+      "price": 57
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": "#25421",
+      "brand": "Bressi Cooper",
+      "product": "adidas",
+      "category": "Pioneer",
+      "status": false,
+      "amount": 15,
+      "price": 33
+    },
+    {
+      "id": "#25421",
+      "brand": "Bressi Cooper",
+      "product": "adidas",
+      "category": "Cash",
+      "status": true,
+      "amount": 16,
+      "price": 23
+    },
+    {
+      "id": "#25421",
+      "brand": "Bressi Cooper",
+      "product": "adidas",
+      "category": "PayPal",
+      "status": false,
+      "amount": 70,
+      "price": 169
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
