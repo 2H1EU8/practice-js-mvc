@@ -1,1 +1,13 @@
-@use "function" as *;
+@use 'functions' as *;
+
+//Font family
+$primary-font: 'Open Sans', sans-serif;
+
+//Color
+$white-color: #ffffff;
+$dark-gray: #232321;
+
+//Breakpoint
+$break-point: (
+  'medium': 1150px,
+);
