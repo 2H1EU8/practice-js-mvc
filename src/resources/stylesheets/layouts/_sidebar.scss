@@ -1,0 +1,35 @@
+@use '../abstracts/' as *;
+.sidebar {
+  padding: pxToRem(32) pxToRem(24);
+  &__logo {
+    padding: 0 pxToRem(42);
+    margin-bottom: pxToRem(48);
+  }
+  &__menu {
+    @include flex(flex, column);
+    gap: 16px;
+    margin-bottom: pxToRem(32);
+    &--item {
+      padding: 8px 16px;
+      @include font($primary-font, 14px, 700);
+      @include flex(flex, row, center);
+      gap: 8px;
+      p {
+        text-transform: uppercase;
+      }
+      #para {
+        color: $white-color;
+      }
+    }
+    #item {
+      border-radius: 8px;
+      background-color: $blue-color;
+    }
+  }
+  &__category {
+    @include flex(flex, row, center, space-between);
+    h2 {
+      @include font($primary-font, 20px, 800);
+    }
+  }
+}
