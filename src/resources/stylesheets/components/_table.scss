@@ -1,0 +1,57 @@
+@use '../abstracts' as *;
+
+.table {
+  &__header {
+    h2 {
+      @include font($primary-font, 24px, 700);
+    }
+    p {
+      @include font($primary-font, 16px, 500);
+      margin-bottom: 24px;
+    }
+    &--btn {
+      text-align: right;
+    }
+    select {
+      border-radius: 8px;
+      background: $white-color;
+      padding: 16px;
+      outline: none;
+      @include font($primary-font, 14px, 600);
+    }
+  }
+}
+
+table {
+  width: 100%;
+  margin: 16px auto 0;
+  background-color: $white-color;
+  border-collapse: collapse;
+  color: $shoes-table;
+  @include font($primary-font, 16px, 700);
+
+  td,
+  th {
+    border-bottom: 0.5px solid $border-color;
+  }
+
+  input {
+    accent-color: $shoes-table;
+  }
+}
+
+table th {
+  background-color: $white-color;
+}
+
+table td {
+  word-wrap: break-word;
+}
+
+.table-title {
+  padding: 16px 0;
+  border-bottom: 1px $border-color solid;
+  p {
+    @include font($primary-font, 20px, 700);
+  }
+}
