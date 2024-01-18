@@ -10,6 +10,7 @@ import TableBody from './modules/TableRow';
 
 
 
+
 class ShoesView {
   constructor() {
     this.app = document.querySelector('#root');
@@ -33,6 +34,7 @@ class ShoesView {
     this.main.appendChild(this.bodyFooter);
     this.bodyFooter.innerHTML += HeaderTable();
     this.bodyFooter.innerHTML += ShoesTable();
+    this.bodyFooter.innerHTML += Pagination();
     this.bodyFooter.innerHTML += Footer();
     
     // this.app.innerHTML += BookItem({id:1, title: "abc",author: "hi", category: "da", status: true,  number: 12,  price: 23});

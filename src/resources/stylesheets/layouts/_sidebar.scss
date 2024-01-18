@@ -1,9 +1,19 @@
 @use '../abstracts/' as *;
 .sidebar {
   padding: pxToRem(32) pxToRem(24);
+
+  @media screen and (max-width: 820px) {
+    width: pxToRem(100);
+  }
   &__logo {
     padding: 0 pxToRem(42);
     margin-bottom: pxToRem(48);
+
+    @media screen and (max-width: 654px) {
+      img {
+        width: pxToRem(100);
+      }
+    }
   }
   &__menu {
     @include flex(flex, column);
@@ -16,6 +26,9 @@
       gap: 8px;
       p {
         text-transform: uppercase;
+        @media screen and (max-width: 820px) {
+          display: none;
+        }
       }
       #para {
         color: $white-color;
@@ -27,6 +40,9 @@
     }
   }
   &__category {
+    @media screen and (max-width: 820px) {
+      display: none;
+    }
     @include flex(flex, row, center, space-between);
     h2 {
       @include font($primary-font, 20px, 800);

@@ -1,6 +1,6 @@
 @use '../abstracts/' as *;
 .footer {
-  padding: 16px 48px 48px 24px;
+  padding: 48px 0;
   @include flex(flex, row, center, space-between);
   &__menu {
     font-weight: 700;

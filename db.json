@@ -1,7 +1,8 @@
 {
   "shoes": [
     {
-      "id": "#25421",
+      "image": "/avt-1.3cd62d23.jpg",
+      "sku_id": "#25421",
       "brand": "Bressi Cooper",
       "product": "adidas",
       "category": "PayPal",
@@ -10,7 +11,8 @@
       "price": 57
     },
     {
-      "id": "#25421",
+      "image": "/avt-2.3bdfd00a.jpg",
+      "sku_id": "#25421",
       "brand": "Bressi Cooper",
       "product": "adidas",
       "category": "Pioneer",
@@ -19,7 +21,8 @@
       "price": 33
     },
     {
-      "id": "#25421",
+      "image": "/avt-3-7.60b9b0ce.jpg",
+      "sku_id": "#25421",
       "brand": "Bressi Cooper",
       "product": "adidas",
       "category": "Cash",
@@ -28,7 +31,8 @@
       "price": 23
     },
     {
-      "id": "#25421",
+      "image": "/avt-4.3ec10eec.jpg",
+      "sku_id": "#25421",
       "brand": "Bressi Cooper",
       "product": "adidas",
       "category": "PayPal",
