@@ -5,8 +5,10 @@ import SideBar from './layouts/sidebar';
 import Footer from './layouts/footer';
 import Pagination from './modules/Pagination';
 import ShoesTable from './modules/ShoesTable';
-import HeaderTable from './modules/HeaderTable';
+import ProductHeader from './modules/ProductHeader';
 import TableBody from './modules/TableRow';
+import ProductDetail from './modules/ProductDetail';
+import ProductHeader_2 from './modules/ProductHeader_2';
 
 
 
@@ -32,12 +34,15 @@ class ShoesView {
     this.container.appendChild(this.main);
     this.main.innerHTML += Header();;
     this.main.appendChild(this.bodyFooter);
-    this.bodyFooter.innerHTML += HeaderTable();
-    this.bodyFooter.innerHTML += ShoesTable();
-    this.bodyFooter.innerHTML += Pagination();
+    // this.bodyFooter.innerHTML += ProductHeader();
+    // this.bodyFooter.innerHTML += ShoesTable();
+    // this.bodyFooter.innerHTML += Pagination();
+    // this.bodyFooter.innerHTML += Footer();
+    
+    this.bodyFooter.innerHTML += ProductHeader_2();
+    this.bodyFooter.innerHTML += ProductDetail()
     this.bodyFooter.innerHTML += Footer();
     
-    // this.app.innerHTML += BookItem({id:1, title: "abc",author: "hi", category: "da", status: true,  number: 12,  price: 23});
   }
 }
 
