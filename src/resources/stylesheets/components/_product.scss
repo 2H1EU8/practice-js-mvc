@@ -1,0 +1,142 @@
+@use '../abstracts/' as *;
+
+.product {
+  padding: 24px;
+  background-color: $white-color;
+  border-radius: 16px;
+  @include flex(flex, row);
+  gap: pxToRem(47);
+
+  &-right {
+    @include flex(flex, column, center, center);
+    gap: 40px;
+  }
+  &--btn {
+    padding: 16px;
+    border: 1px solid $dark-gray;
+    border-radius: 8px;
+    @include flex(flex, row);
+    gap: 16px;
+
+    button {
+      border-radius: 20px;
+      background: $neutral-gray;
+      padding: 4px 12px;
+
+      a {
+        color: $white-color;
+        text-decoration: none;
+        @include font($primary-font, 14px, 500);
+        letter-spacing: 0.25px;
+      }
+    }
+  }
+  &__form {
+    @include flex(flex, column);
+    gap: 24px;
+    &--item {
+      @include flex(flex, column);
+      gap: 16px;
+    }
+    &--row {
+      @include flex(flex, row);
+      gap: 24px;
+    }
+    h3 {
+      @include font($primary-font, 20px, 700);
+    }
+    input,
+    textarea {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      border: 1px solid $dark-gray;
+      @include font($primary-font, 16px, 400);
+      color: $neutral-gray;
+    }
+  }
+
+  &__image {
+    @include flex(flex, column);
+    gap: 24px;
+    figure {
+      padding: 8px;
+      background-color: $white-gray;
+    }
+  }
+
+  &__gallery {
+    @include flex(flex, column);
+    gap: 16px;
+
+    h3 {
+      color: $dark-gray;
+      @include font($primary-font, 20px, 700);
+    }
+    &--img {
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px dashed $dark-gray;
+      text-align: center;
+
+      p {
+        color: $gray-main;
+      }
+
+      #para {
+        @include flex(flex, column);
+      }
+    }
+  }
+
+  &__thumbnail {
+    @include flex(flex, column);
+    gap: 12px;
+
+    &--list {
+      @include flex(flex, row, center);
+      gap: 16px;
+      padding: 16px;
+      justify-content: space-around;
+    }
+
+    &--detail {
+      @include flex(flex, column);
+      gap: 16px;
+      @include font($primary-font, 16px, 600);
+
+      span {
+        border-radius: 8px;
+        background-color: $border-product;
+        height: 4px;
+        width: 100%;
+      }
+    }
+  }
+
+  &__action {
+    @include flex(flex, row, center);
+    gap: 16px;
+    button {
+      text-transform: uppercase;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      padding: 8px 16px;
+    }
+    #btn-update {
+      color: $white-color;
+      background-color: $dark-gray;
+    }
+    #btn-delete {
+      color: $white-color;
+      background-color: $red-color;
+    }
+    #btn-cancel {
+      color: $dark-gray;
+      border: 1px solid $dark-gray;
+      background-color: $white-color;
+    }
+  }
+}
