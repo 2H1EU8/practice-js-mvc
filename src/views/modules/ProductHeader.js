@@ -1,4 +1,4 @@
-const HeaderTable = () => {
+const ProductHeader = () => {
   return `
      <div class="table__header">
         <h2>Product list</h2>
@@ -13,4 +13,4 @@ const HeaderTable = () => {
   `;
 }
 
-export default HeaderTable
+export default ProductHeader
