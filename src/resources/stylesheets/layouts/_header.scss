@@ -1,0 +1,18 @@
+@use '../abstracts/' as *;
+.header {
+  max-width: pxToRem(1180);
+  @include flex(flex, row, center, flex-end);
+  padding: pxToRem(32) pxToRem(60);
+  gap: pxToRem(40);
+
+  @media screen and (max-width: 654px) {
+    gap: 20px;
+  }
+  &__select {
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 8px;
+    @include font($primary-font, 14px, 600);
+    outline: none;
+  }
+}

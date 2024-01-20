@@ -1,0 +1,21 @@
+@use '../abstracts/' as *;
+
+.pagination {
+  @include flex(flex, row);
+  margin-top: 24px;
+  gap: 16px;
+  button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid $dark-gray;
+  }
+
+  #next {
+    @include flex(flex, row, center);
+  }
+
+  #current {
+    background-color: $dark-gray;
+    color: $white-color;
+  }
+}

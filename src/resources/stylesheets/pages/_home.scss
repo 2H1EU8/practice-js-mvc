@@ -1,0 +1,15 @@
+@use '../abstracts' as *;
+
+.container {
+  display: flex;
+  align-items: start;
+}
+
+.main {
+  flex: 1;
+}
+
+.body__footer {
+  background-color: $gray;
+  padding: 24px 24px;
+}
