@@ -2,7 +2,7 @@
 .header {
   max-width: pxToRem(1180);
   @include flex(flex, row, center, flex-end);
-  padding: pxToRem(32) pxToRem(60);
+  padding: pxToRem(32) 0;
   gap: pxToRem(40);
 
   @media screen and (max-width: 654px) {

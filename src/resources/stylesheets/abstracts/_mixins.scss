@@ -34,9 +34,30 @@
   }
 }
 
+@mixin large {
+  @media screen and (max-width: map-get($break-point, 'large')) {
+    @content;
+  }
+}
+@mixin small {
+  @media screen and (max-width: map-get($break-point, 'small')) {
+    @content;
+  }
+}
+
 @mixin responsive($break-point) {
   @if $break-point == medium {
     @include medium() {
+      @content;
+    }
+  }
+  @if $break-point == large {
+    @include large() {
+      @content;
+    }
+  }
+  @if $break-point == small {
+    @include small() {
       @content;
     }
   }

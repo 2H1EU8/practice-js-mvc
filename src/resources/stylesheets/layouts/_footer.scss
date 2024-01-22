@@ -1,7 +1,13 @@
 @use '../abstracts/' as *;
 .footer {
   padding: 48px 0;
+
   @include flex(flex, row, center, space-between);
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    gap: 30px;
+  }
   &__menu {
     font-weight: 700;
     @include flex(flex, row, center);
@@ -11,6 +17,10 @@
         text-decoration: none;
         text-transform: capitalize;
         color: $dark-gray;
+
+        @include responsive('small') {
+          font-size: 14px;
+        }
       }
     }
   }

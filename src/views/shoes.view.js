@@ -34,10 +34,10 @@ class ShoesView {
     this.container.appendChild(this.main);
     this.main.innerHTML += Header();;
     this.main.appendChild(this.bodyFooter);
-    // this.bodyFooter.innerHTML += ProductHeader();
-    // this.bodyFooter.innerHTML += ShoesTable();
-    // this.bodyFooter.innerHTML += Pagination();
-    // this.bodyFooter.innerHTML += Footer();
+    this.bodyFooter.innerHTML += ProductHeader();
+    this.bodyFooter.innerHTML += ShoesTable();
+    this.bodyFooter.innerHTML += Pagination();
+    this.bodyFooter.innerHTML += Footer();
     
     this.bodyFooter.innerHTML += ProductHeader_2();
     this.bodyFooter.innerHTML += ProductDetail()

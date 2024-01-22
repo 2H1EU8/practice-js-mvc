@@ -7,16 +7,35 @@
   @include flex(flex, row);
   gap: pxToRem(47);
 
+  @include responsive('large') {
+    @include flex(flex, column);
+  }
+
+  @include responsive('small') {
+    padding: 12px;
+  }
+
   &-right {
     @include flex(flex, column, center, center);
     gap: 40px;
   }
+
   &--btn {
     padding: 16px;
     border: 1px solid $dark-gray;
     border-radius: 8px;
     @include flex(flex, row);
     gap: 16px;
+
+    @include responsive('small') {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    @media screen and (max-width: 420px) {
+      grid-template-columns: none;
+    }
 
     button {
       border-radius: 20px;
@@ -39,8 +58,14 @@
       gap: 16px;
     }
     &--row {
-      @include flex(flex, row);
+      @include flex(flex, row, false, space-between);
       gap: 24px;
+      @media screen and (max-width: 860px) {
+        flex-direction: column;
+      }
+      & > * {
+        flex: 1;
+      }
     }
     h3 {
       @include font($primary-font, 20px, 700);
@@ -63,12 +88,19 @@
     figure {
       padding: 8px;
       background-color: $white-gray;
+      @include responsive('small') {
+        padding: 0;
+        img {
+          width: 80%;
+        }
+      }
     }
   }
 
   &__gallery {
     @include flex(flex, column);
     gap: 16px;
+    padding: 0 24px;
 
     h3 {
       color: $dark-gray;
@@ -97,7 +129,6 @@
     &--list {
       @include flex(flex, row, center);
       gap: 16px;
-      padding: 16px;
       justify-content: space-around;
     }
 
@@ -118,25 +149,50 @@
   &__action {
     @include flex(flex, row, center);
     gap: 16px;
+
+    @media screen and (max-width: 475px) {
+      gap: 10px;
+    }
+    @media screen and (max-width: 420px) {
+      gap: 8px;
+    }
     button {
       text-transform: uppercase;
       border-radius: 8px;
       border: none;
       outline: none;
       padding: 8px 16px;
+
+      @media screen and (max-width: 475px) {
+        padding: 6px 10px;
+      }
+
+      @media screen and (max-width: 420px) {
+        padding: 4px 12px;
+      }
     }
     #btn-update {
       color: $white-color;
       background-color: $dark-gray;
+      @extend .font-size;
     }
     #btn-delete {
       color: $white-color;
       background-color: $red-color;
+      @extend .font-size;
     }
     #btn-cancel {
       color: $dark-gray;
       border: 1px solid $dark-gray;
       background-color: $white-color;
+      @extend .font-size;
+    }
+
+    .font-size {
+      @include font($primary-font, 14px, 600);
+      @media screen and (max-width: 420px) {
+        font-size: 12px;
+      }
     }
   }
 }

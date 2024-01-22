@@ -1,6 +1,12 @@
 @use '../abstracts' as *;
 
 .table {
+  &-content {
+    @include responsive('small') {
+      width: 100%;
+      overflow: auto;
+    }
+  }
   &__header {
     h2 {
       @include font($primary-font, 24px, 700);
@@ -49,7 +55,20 @@ table {
   td {
     padding: 16px 0;
     word-wrap: break-word;
+    .circle {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $blue-color;
+    }
   }
+}
+
+.stock-wrapper {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .table-title {
