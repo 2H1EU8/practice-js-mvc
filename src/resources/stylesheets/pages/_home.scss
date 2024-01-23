@@ -2,11 +2,12 @@
 
 .container {
   display: flex;
-  align-items: start;
+  justify-content: center;
 }
 
 .main {
-  flex: 1;
+  max-width: pxToRem(1180);
+  overflow-x: auto;
 }
 
 .body__footer {
