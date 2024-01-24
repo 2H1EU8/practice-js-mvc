@@ -60,6 +60,7 @@ class ShoesView {
     const main = document.createElement('main');
     main.className = 'main';
 
+
     const bodyFooter = document.createElement('div');
     bodyFooter.className = 'body__footer';
     
@@ -67,6 +68,7 @@ class ShoesView {
     container.appendChild(main);
     main.innerHTML += Header();
     main.appendChild(bodyFooter);
+
     
     bodyFooter.innerHTML += ProductHeader_2();
     bodyFooter.innerHTML   += ProductDetail();
