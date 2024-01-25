@@ -9,41 +9,75 @@ import ProductHeader from './modules/ProductHeader';
 import TableBody from './modules/TableRow';
 import ProductDetail from './modules/ProductDetail';
 import ProductHeader_2 from './modules/ProductHeader_2';
-
-
-
+import Router from '../utils/routes';
 
 class ShoesView {
   constructor() {
     this.app = document.querySelector('#root');
-
-    // this.app.innerHTML += registerForm();
-    // this.app.innerHTML += loginForm();
-
-    this.container = document.createElement('div');
-    this.container.className = 'container';
-
-    this.main = document.createElement('main');
-    this.main.className = 'main';
-
-    this.bodyFooter = document.createElement('div');
-    this.bodyFooter.className = 'body__footer';
-
-    this.app.appendChild(this.container);
-    this.container.innerHTML += SideBar();
-    this.container.appendChild(this.main);
-    this.main.innerHTML += Header();;
-    this.main.appendChild(this.bodyFooter);
-    this.bodyFooter.innerHTML += ProductHeader();
-    this.bodyFooter.innerHTML += ShoesTable();
-    this.bodyFooter.innerHTML += Pagination();
-    this.bodyFooter.innerHTML += Footer();
-    
-    this.bodyFooter.innerHTML += ProductHeader_2();
-    this.bodyFooter.innerHTML += ProductDetail()
-    this.bodyFooter.innerHTML += Footer();
-    
+    this.router = new Router()
+    this.initRoute()
   }
+
+  initRoute() {
+
+    this.router.define('/register', registerForm())
+    this.router.define('/login', loginForm())
+    this.router.define('/product/table', this.ProductTable())
+    this.router.define('/product/detail', this.ProductDetail())
+    
+    this.router.listen()
+
+
+  }
+
+  ProductTable(){
+    const container = document.createElement('div');
+    container.className = 'container';
+
+    const main = document.createElement('main');
+    main.className = 'main';
+
+    const bodyFooter = document.createElement('div');
+    bodyFooter.className = 'body__footer';
+    
+    container.innerHTML += SideBar();
+    container.appendChild(main);
+    main.innerHTML += Header();
+    main.appendChild(bodyFooter);
+   
+    bodyFooter.innerHTML += ProductHeader();
+    bodyFooter.innerHTML += ShoesTable();
+    bodyFooter.innerHTML += Pagination()  ;
+    bodyFooter.innerHTML += Footer();
+     
+    return container
+  }
+
+  ProductDetail(){
+    const container = document.createElement('div');
+    container.className = 'container';
+
+    const main = document.createElement('main');
+    main.className = 'main';
+
+
+    const bodyFooter = document.createElement('div');
+    bodyFooter.className = 'body__footer';
+    
+    container.innerHTML += SideBar();
+    container.appendChild(main);
+    main.innerHTML += Header();
+    main.appendChild(bodyFooter);
+
+    
+    bodyFooter.innerHTML += ProductHeader_2();
+    bodyFooter.innerHTML   += ProductDetail();
+    bodyFooter.innerHTML += Footer();
+    
+    return container
+  }
+
 }
+
 
 export default ShoesView
