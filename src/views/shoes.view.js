@@ -10,27 +10,26 @@ import TableBody from './modules/TableRow';
 import ProductDetail from './modules/ProductDetail';
 import ProductHeader_2 from './modules/ProductHeader_2';
 import Router from '../utils/routes';
+import { validateForm } from '../helper/validateForm';
 
 class ShoesView {
   constructor() {
     this.app = document.querySelector('#root');
     this.router = new Router()
     this.initRoute()
+    this.validate()
   }
 
   initRoute() {
-
     this.router.define('/register', registerForm())
     this.router.define('/login', loginForm())
     this.router.define('/product/table', this.ProductTable())
     this.router.define('/product/detail', this.ProductDetail())
     
     this.router.listen()
-
-
   }
 
-  ProductTable(){
+  ProductTable() {
     const container = document.createElement('div');
     container.className = 'container';
 
@@ -53,13 +52,12 @@ class ShoesView {
     return container
   }
 
-  ProductDetail(){
+  ProductDetail() {
     const container = document.createElement('div');
     container.className = 'container';
 
     const main = document.createElement('main');
     main.className = 'main';
-
 
     const bodyFooter = document.createElement('div');
     bodyFooter.className = 'body__footer';
@@ -68,7 +66,6 @@ class ShoesView {
     container.appendChild(main);
     main.innerHTML += Header();
     main.appendChild(bodyFooter);
-
     
     bodyFooter.innerHTML += ProductHeader_2();
     bodyFooter.innerHTML   += ProductDetail();
@@ -76,7 +73,25 @@ class ShoesView {
     
     return container
   }
+  
+  validate() {
+    this.form = document.querySelector('form')
+    this.form.addEventListener('submit', e => {
+      e.preventDefault()
+      const firstName = document.getElementById('firstName').value
+      const lastName = document.getElementById('lastName').value
+      const password = document.getElementById('password').value
+      const email = document.getElementById('email').value
 
+      const accepts = document.querySelectorAll('input[type]:checked')
+      if (accepts?.length < 2) {
+        alert('You need to agree policy')
+        return
+      }
+
+      validateForm(firstName, lastName, password, email)
+    })
+  }
 }
 
 
