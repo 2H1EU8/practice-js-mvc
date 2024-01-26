@@ -41,13 +41,14 @@ function registerForm() {
 
           <div class="resform__right--input">
             <h2>Your name</h2>
-            <input type="text" placeholder="First name" />
-            <input type="text" placeholder="Last name" />
+            <input id="firstName" type="text" placeholder="First name" />
+            <input id="lastName" type="text" placeholder="Last name" />
           </div>
 
           <div class="resform__right--input">
             <h2>Login details</h2>
-            <input type="password" placeholder="Password" />
+            <input type="email" id="email" placeholder="Email" />
+            <input id="password" type="password" placeholder="Password" />
             <p id="para">
               Minimum 8 characters with at least one uppercase, one lowercase,
               one special character and a number
