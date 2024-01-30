@@ -1,6 +1,6 @@
 import ShoesView from './views/shoes.view';
-import UserController from './controller/user.controller';
-import UserService from './services/user.service';
+import ShoesController from './controller/shoes.controller';
+import ShoesService from './services/shoes.service';
 
 
-new UserController(new ShoesView(), new UserService())
+new ShoesController(new ShoesView(), new ShoesService())

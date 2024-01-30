@@ -6,10 +6,10 @@ import Footer from './layouts/footer';
 import Pagination from './modules/Pagination';
 import ShoesTable from './modules/ShoesTable';
 import ProductHeader from './modules/ProductHeader';
-import TableBody from './modules/TableRow';
 import ProductDetail from './modules/ProductDetail';
 import ProductHeader_2 from './modules/ProductHeader_2';
 import Router from '../utils/routes';
+import TableBody from './modules/TableRow';
 
 class ShoesView {
   constructor() {
@@ -46,7 +46,7 @@ class ShoesView {
     bodyFooter.innerHTML += ShoesTable();
     bodyFooter.innerHTML += Pagination()  ;
     bodyFooter.innerHTML += Footer();
-     
+    
     return container
   }
 
@@ -70,6 +70,12 @@ class ShoesView {
     bodyFooter.innerHTML += Footer();
     
     return container
+  }
+
+  bindTable(shoes) {
+    const table = document.querySelector('.table-content table')
+    const tableBody = table.querySelector('tbody')
+    tableBody.innerHTML = TableBody(shoes)
   }
 }
 
