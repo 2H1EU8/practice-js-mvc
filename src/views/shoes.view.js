@@ -13,13 +13,11 @@ import Router from '../utils/routes';
 import { validateForm } from '../helper/validateForm';
 import changePassword from './pages/changePassword';
 
-
 class ShoesView {
   constructor() {
     this.app = document.querySelector('#root');
     this.router = new Router()
     this.initRoute()
-    this.validate()
   }
 
   initRoute() {
@@ -75,25 +73,6 @@ class ShoesView {
     bodyFooter.innerHTML += Footer();
     
     return container
-  }
-  
-  validate() {
-    this.form = document.querySelector('form')
-    this.form.addEventListener('submit', e => {
-      e.preventDefault()
-      const firstName = document.getElementById('firstName').value
-      const lastName = document.getElementById('lastName').value
-      const password = document.getElementById('password').value
-      const email = document.getElementById('email').value
-
-      const accepts = document.querySelectorAll('input[type]:checked')
-      if (accepts?.length < 2) {
-        alert('You need to agree policy')
-        return
-      }
-
-      validateForm(firstName, lastName, password, email)
-    })
   }
 }
 
