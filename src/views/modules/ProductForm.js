@@ -8,7 +8,7 @@ const ProductForm = () => {
 
             <div class="product__form--item">
                 <h3>Description</h3>
-                <textarea name="">Long distance running requires a lot from athletes.</textarea>
+                <textarea placeholder="Long distance running requires a lot from athletes."></textarea>
             </div>
 
             <div class="product__form--item">

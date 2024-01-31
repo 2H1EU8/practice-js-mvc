@@ -53,14 +53,23 @@ table {
     background-color: $white-color;
   }
   td {
-    padding: 16px 0;
+    padding: 20px 10px;
     word-wrap: break-word;
-    .circle {
+    text-align: center;
+    .stock {
       display: inline-block;
       width: 10px;
       height: 10px;
       border-radius: 50%;
       background-color: $blue-color;
+    }
+
+    .sold-out {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $yellow-color;
     }
   }
 }

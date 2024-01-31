@@ -1,20 +1,23 @@
 import { validateForm } from "../helper/validateForm";
-import Header from "../views/layouts/header";
 
-class UserController {
+
+class ShoesController {
     constructor(userView, userService) {
         this.userView = userView;
         this.userService  = userService;
         this.login = this.login.bind(this);
         this.register = this.register.bind(this);
+        this.logout = this.logout.bind(this);
         this.login()
         this.register()
-        
+        this.logout()
+        this.showTable()
     }
 
     login() {
         this.formLogin = document.querySelector('.form__right');
-        this.formLogin?.addEventListener('submit', (e) => {
+        this.formLogin?.addEventListener('submit', async(e) => {
+
             e.preventDefault();
             const email = document.querySelector('.form__right input[type="text"]').value;
             const password = document.querySelector('.form__right input[type="password"]').value;
@@ -25,24 +28,35 @@ class UserController {
                 return
             }
 
-            this.userService.getUser(email, password)
-                .then(res => {
-                    if (res) {
-                        alert('Login successfully');
-                        window.location.href = '/product/table';
-                    } else {
-                        alert("User not found");
-                    }
-                })
-                .catch(err => console.log(err));
+            try {
+                const users = await this.userService.getUser(email, password);
+
+                if (users) {
+
+                    localStorage.setItem('users', JSON.stringify({
+                        firstName: users.firstName,
+                        lastName: users.lastName
+                    }));
+
+
+                    alert('Login successfully');
+
+
+                    window.location.href = '/product/table';
+                } else {
+                    alert('User not found');
+                }
+            } catch (err) {
+                console.log(err);
+            }
+
         });
     }
 
 
     register() {
         this.form = document.querySelector('form')
-        console.log(this);
-        this.form.addEventListener('submit', e => {
+        this.form?.addEventListener('submit', e => {
 
             e.preventDefault()
             const firstName = document.getElementById('firstName').value
@@ -71,6 +85,23 @@ class UserController {
         })
     }
 
+    logout() {
+        this.selects = document.querySelector('.header__select')
+        this.selects?.addEventListener('change', (e) => {
+            const {value} = e.target
+
+            if (value === 'logout') {
+                localStorage.removeItem('users')
+                window.location.pathname = '/login'
+            }
+        })
+    }
+
+    async showTable() {
+        const shoes = await this.userService.getAllShoes().then(data => data)
+        this.userView.bindTable(shoes)
+
+    }
 }
 
-export default UserController
+export default ShoesController
