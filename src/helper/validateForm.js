@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
     input.addEventListener('keyup', function () {
       var p_c = document.getElementById('p-c');
       var p = document.getElementById('p');
-      console.log(p.value + p_c.value);
 
       if (p.value.length >= 8) {
         // Check for at least one uppercase letter
@@ -75,3 +74,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+function validateFormPassword() {
+  const password = document.getElementById('p').value;
+  const confirmPassword = document.getElementById('p-c').value;
+
+  if (!password.trim() || !confirmPassword.trim()){
+      alert('Please fill in all fields.');
+      return false;
+  }
+  return true;
+}
+
+export default validateFormPassword

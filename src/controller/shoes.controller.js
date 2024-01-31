@@ -1,17 +1,15 @@
-import { validateForm } from "../helper/validateForm";
+import validateFormPassword, { validateForm } from "../helper/validateForm";
 
 
 class ShoesController {
     constructor(userView, userService) {
         this.userView = userView;
         this.userService  = userService;
-        this.login = this.login.bind(this);
-        this.register = this.register.bind(this);
-        this.logout = this.logout.bind(this);
         this.login()
         this.register()
         this.logout()
         this.showTable()
+        this.changePassword()
     }
 
     login() {
@@ -33,11 +31,9 @@ class ShoesController {
 
                 if (users) {
 
-                    localStorage.setItem('users', JSON.stringify({
-                        firstName: users.firstName,
-                        lastName: users.lastName
-                    }));
+                    const {password, ...others} = users
 
+                    localStorage.setItem('users', JSON.stringify(others));
 
                     alert('Login successfully');
 
@@ -81,7 +77,32 @@ class ShoesController {
                     alert('Error registering user')
                 })
             }
+        })
+    }
+
+    changePassword(){
+        this.form = document.querySelector('form')
+        this.form?.addEventListener('submit', (e) => {
+            e.preventDefault()
             
+            const password = document.getElementById('p').value
+            const repassword = document.getElementById('p-c').value;
+
+            const storedUser = localStorage.getItem('users');
+            const user = storedUser ? JSON.parse(storedUser) : null;
+                    
+            if(validateFormPassword(user.firstName, user.lastName, password, user.email)){
+                console.log(password, repassword);
+                this.userService.changePassword(user.firstName, user.lastName, repassword, user.email, user.id)
+                .then(()=>{
+                    alert('Change password sucessfully');
+                    window.location.pathname = "/product/table"
+                })
+                .catch((err)=>{
+                    console.error(err)
+                    alert('Error. Please enter again');
+                })
+            }
         })
     }
 
@@ -94,14 +115,23 @@ class ShoesController {
                 localStorage.removeItem('users')
                 window.location.pathname = '/login'
             }
+
+            if(value === 'changePassword'){
+                window.location.pathname = '/change-password'
+            }
         })
     }
 
-    async showTable() {
-        const shoes = await this.userService.getAllShoes().then(data => data)
-        this.userView.bindTable(shoes)
 
-    }
+
+    async showTable() {
+        const user = localStorage.getItem('users')
+        let shoes = []
+        if (user) {
+            shoes = await this.userService.getAllShoes().then(data => data)
+        }
+        this.userView.bindTable(shoes)
+    }    
 }
 
 export default ShoesController

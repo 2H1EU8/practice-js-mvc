@@ -10,7 +10,6 @@ import ProductDetail from './modules/ProductDetail';
 import ProductHeader_2 from './modules/ProductHeader_2';
 import Router from '../utils/routes';
 import TableBody from './modules/TableRow';
-import { validateForm } from '../helper/validateForm';
 import changePassword from './pages/changePassword';
 
 class ShoesView {
@@ -78,7 +77,18 @@ class ShoesView {
   bindTable(shoes) {
     const table = document.querySelector('.table-content table')
     const tableBody = table.querySelector('tbody')
-    tableBody.innerHTML = TableBody(shoes)
+    if (shoes && shoes.length) {
+      tableBody.innerHTML = TableBody(shoes)
+    }
+    else {
+      const row = document.createElement('tr')
+      const cell = document.createElement('td')
+      cell.setAttribute('colspan', '8')
+      cell.setAttribute('align', 'center')
+      cell.innerText = 'No row'
+      row.appendChild(cell)
+      tableBody.appendChild(row)
+    }
   }
 }
 

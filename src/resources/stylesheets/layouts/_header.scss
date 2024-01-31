@@ -15,4 +15,17 @@
     @include font($primary-font, 14px, 600);
     outline: none;
   }
+  &__button {
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid $dark-gray;
+    background-color: $dark-gray;
+    a {
+      @include font($primary-font, 14px, 600);
+      color: $white-color;
+      text-decoration: none;
+    }
+  }
 }
