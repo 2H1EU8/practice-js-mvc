@@ -1,4 +1,4 @@
-function registerForm() {
+const registerForm = () => {
     return `
     <div class="resform">
         <figure class="resform__left">

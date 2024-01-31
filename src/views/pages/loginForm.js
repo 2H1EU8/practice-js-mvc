@@ -1,4 +1,4 @@
-function loginForm() {
+const loginForm = () => {
     return `
        <div class="form">
         <figure class="form__left">

@@ -1,5 +1,5 @@
-import registerForm from './components/registerForm';
-import loginForm from './components/loginForm';
+import registerForm from './pages/registerForm';
+import loginForm from './pages/loginForm';
 import Header from './layouts/header';
 import SideBar from './layouts/sidebar';
 import Footer from './layouts/footer';
@@ -10,6 +10,8 @@ import TableBody from './modules/TableRow';
 import ProductDetail from './modules/ProductDetail';
 import ProductHeader_2 from './modules/ProductHeader_2';
 import Router from '../utils/routes';
+import { validateForm } from '../helper/validateForm';
+import changePassword from './pages/changePassword';
 
 class ShoesView {
   constructor() {
@@ -23,6 +25,7 @@ class ShoesView {
     this.router.define('/login', loginForm())
     this.router.define('/product/table', this.ProductTable())
     this.router.define('/product/detail', this.ProductDetail())
+    this.router.define('/change-password', changePassword())
     
     this.router.listen()
   }
