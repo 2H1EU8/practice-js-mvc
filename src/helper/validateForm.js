@@ -24,3 +24,54 @@ export function validateForm(firstName = '', lastName = '', password = '', email
 
     return true;
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Password strength check
+  var passwordInputs = document.querySelectorAll('.password');
+  passwordInputs.forEach(function (input) {
+    input.addEventListener('keyup', function () {
+      var p_c = document.getElementById('p-c');
+      var p = document.getElementById('p');
+      console.log(p.value + p_c.value);
+
+      if (p.value.length >= 8) {
+        // Check for at least one uppercase letter
+        var upperCaseRegex = /[A-Z]/;
+        // Check for at least one lowercase letter
+        var lowerCaseRegex = /[a-z]/;
+        // Check for at least one special character
+        var specialCharacterRegex = /[!@#$%^&*(),.?":{}|<>]/;
+        // Check for at least one number
+        var numberRegex = /\d/;
+
+        var isValid =
+          upperCaseRegex.test(p.value) &&
+          lowerCaseRegex.test(p.value) &&
+          specialCharacterRegex.test(p.value) &&
+          numberRegex.test(p.value);
+
+        if (!isValid) {
+          document.getElementById('valid').innerHTML = "Password does not meet the requirements";
+        } else {
+          document.getElementById('valid').innerHTML = '';
+        }
+
+        var strength = 'weak';
+        if (p.value.length > 5 && p.value.match(/\d+/g)) {
+          strength = 'medium';
+        }
+        if (p.value.length > 6 && p.value.match(/[^\w\s]/gi)) {
+          strength = 'strong';
+        }
+        document.getElementById('strong').getElementsByTagName('span')[0].className = strength;
+        document.getElementById('strong').getElementsByTagName('span')[0].innerHTML = strength;
+      } else {
+        document.getElementById('valid').innerHTML = "Password must be at least 8 characters long";
+        document.getElementById('strong').getElementsByTagName('span')[0].className = '';
+        document.getElementById('strong').getElementsByTagName('span')[0].innerHTML = '';
+      }
+    });
+  });
+});
+
+
