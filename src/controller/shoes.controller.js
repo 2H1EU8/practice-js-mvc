@@ -1,4 +1,7 @@
+import config from "../api/config";
+import generateID from "../helper/sku_id";
 import validateFormPassword, { validateForm } from "../helper/validateForm";
+import Shoes from "../model/shoes.model";
 
 
 class ShoesController {
@@ -10,6 +13,7 @@ class ShoesController {
         this.logout()
         this.showTable()
         this.changePassword()
+        this.getTable()
     }
 
     login() {
@@ -122,6 +126,33 @@ class ShoesController {
         })
     }
 
+    getTable(){
+        const addShoes = document.getElementById('btn-add')
+        addShoes.addEventListener('click', async () => {
+            const name = document.getElementById('name').value;
+            const description = document.getElementById('description').value;
+            const category = document.getElementById('category').value;
+            const brand = document.getElementById('brand').value;
+            const id = +document.getElementById('sku-id').value;
+            const amount = document.getElementById('amount').value;
+            const price = document.getElementById('price').value;
+            const salePrice = document.getElementById('sale-price').value;
+
+            this.userService.addShoes(new Shoes({brand, name, category, status: '', id, salePrice, amount, price, description, image: ''}))
+            .then(()=>{
+                alert("Add shoes successfully")
+                window.location.href = '/product/table';
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Error adding shoes')
+            })
+
+            
+
+        })
+    }
+
 
 
     async showTable() {
@@ -131,7 +162,32 @@ class ShoesController {
             shoes = await this.userService.getAllShoes().then(data => data)
         }
         this.userView.bindTable(shoes)
-    }    
+    } 
+
+    // async submitForm() {
+    //     const formData = document.querySelector('.product__form');
+    //     console.log(formData);
+    
+    //     try {
+    //         const addedShoe = await userService.add(formData);
+    //         console.log('Shoes added successfully:', addedShoe);
+    //         await showTable();
+    //     } catch (error) {
+    //         console.error('Error adding shoes:', error);
+    //     }
+    // }
+
+
+    // async bindRowClickEvent(){
+    //     const tableBody = document.querySelector('.table-content table tbody');
+    //     tableBody.addEventListener('click', (event) => {
+    //         const clickedRow = event.target.closest('.product-row');
+    //         if (clickedRow) {
+    //             const productId = clickedRow.dataset.productId;
+    //             window.location.href = `/product/detail?id=${productId}`;
+    //         }
+    //     });
+    // }
 }
 
 export default ShoesController

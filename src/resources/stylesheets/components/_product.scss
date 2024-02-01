@@ -171,6 +171,11 @@
         padding: 4px 12px;
       }
     }
+    #btn-add {
+      color: $white-color;
+      background-color: $dark-gray;
+      @extend .font-size;
+    }
     #btn-update {
       color: $white-color;
       background-color: $dark-gray;
