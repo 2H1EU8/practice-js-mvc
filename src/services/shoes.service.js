@@ -21,7 +21,8 @@ class ShoesService{
                 return {
                     firstName: data.firstName,
                     lastName: data.lastName,
-                    email: data.email
+                    email: data.email,
+                    id: data.id
                 };
             } else {
                 return null;
@@ -41,6 +42,15 @@ class ShoesService{
         }
     }
 
+    async changePassword(firstName,lastName, password, email, id){
+        console.log(firstName, lastName, password, email);
+        try{
+            config.patch(`/users/${id}`, {firstName, lastName, password, email})
+        }catch(err){
+            console.error('Error fetching password again:', err)
+        }
+    }
+
     async getAllShoes() {
         try {
             let { data } = await config.get('/shoes');
@@ -57,7 +67,7 @@ class ShoesService{
 
     async add(shoes){
         try {
-            const { data } = await api.post('/shoes', new Shoes(shoes));
+            const { data } = await config.post('/shoes', new Shoes(shoes));
             if (data) {
                 this.shoes.push(new Shoes(shoes));
                 this.commit();
