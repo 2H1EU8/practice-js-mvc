@@ -137,22 +137,31 @@ class ShoesController {
             const amount = document.getElementById('amount').value;
             const price = document.getElementById('price').value;
             const salePrice = document.getElementById('sale-price').value;
-
-            this.userService.addShoes(new Shoes({brand, name, category, status: '', id, salePrice, amount, price, description, image: ''}))
-            .then(()=>{
-                alert("Add shoes successfully")
-                window.location.href = '/product/table';
+            const image = document.getElementById('imageUpload');
+            var form = new FormData();
+            form.append("image", image.files[0])
+            fetch("https://api.imgbb.com/1/upload?key=8bf6e3a06eaf4cb724b564d3dfdc3faf", {
+                method : "POST",
+                body : form
             })
-            .catch(err => {
-                console.error(err);
-                alert('Error adding shoes')
-            })
-
-            
-
+                .then(res => res.json())
+                .then(data => {
+                    let imageUrl = data.data.url;
+                    return imageUrl
+                })
+                .then((imageUrl) => {
+                    this.userService.addShoes(new Shoes({brand, name, category, status: '', id, salePrice, amount, price, description, image: imageUrl}))
+                    .then(()=>{
+                        alert("Add shoes successfully")
+                        window.location.href = '/product/table';
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        alert('Error adding shoes')
+                    })
+                })
         })
     }
-
 
 
     async showTable() {

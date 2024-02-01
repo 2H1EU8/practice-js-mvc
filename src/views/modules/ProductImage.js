@@ -10,8 +10,7 @@ const ProductImage = () => {
                 <div class="product__gallery--img">
                     <img src="/ph_image-light.d6655624.svg" alt="" />
                     <div id="para">
-                        <p>Drop your imager here, or browse</p>
-                        <p>Jpeg, png are allowed</p>
+                        <input type="file" accept="image/*" id="imageUpload">
                     </div>
                 </div>
             </div>
