@@ -4,6 +4,7 @@ import Shoes from "../model/shoes.model";
 class ShoesService{
     constructor(){
         this.user = [];
+        this.shoes = []
     }
     
     async getUser(email, password) {
@@ -29,7 +30,6 @@ class ShoesService{
             }
         } catch (error) {
             console.error('Error fetching user:', error);
-            throw error;
         }
     }
 
@@ -38,7 +38,6 @@ class ShoesService{
             config.post('/users', {firstName, lastName, email, password})
         } catch (error) {
             console.error('Error fetching user:', error);
-            throw error;
         }
     }
 
@@ -55,26 +54,24 @@ class ShoesService{
         try {
             let { data } = await config.get('/shoes');
             if (data) {
-                data = await data.map((shoes) => new Shoes(shoes));
-                return data
+                this.shoes = await data.map((shoes) => new Shoes(shoes));
+                return this.shoes
             }
         } catch (error) {
             console.error('Error fetching shoes:', error);
-            throw error;
         }
     }
 
 
-    async add(shoes){
+    async addShoes(shoes){
         try {
-            const { data } = await config.post('/shoes', new Shoes(shoes));
+            console.log(shoes);
+            const { data } = await config.post('/shoes', shoes);
             if (data) {
                 this.shoes.push(new Shoes(shoes));
-                this.commit();
             }
         } catch (error) {
-            console.error('Error:', error);
-            throw error;
+            console.error('Error adding shoes:', error);
         }
     }
 }

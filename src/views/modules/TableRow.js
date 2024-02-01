@@ -1,12 +1,12 @@
 const TableRow = (row) => {
   console.log(row);
   return `
-    <tr>
+    <tr class="product-row" data-product-id="${row.product_id}">
       <td>
         <input type="checkbox" />
       </td>
       <td>${row.name}</td>
-      <td>${row.sku_id}</td>
+      <td>${row.id}</td>
       <td>${row.amount}</td>
       <td>${row.category}</td>
       

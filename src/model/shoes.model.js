@@ -2,10 +2,10 @@ import generateID from "../helper/sku_id";
 
 class Shoes {
     constructor({
-        sku_id = generateID(), brand, name, category, status, image,  amount, price} = {
-    },)
+        id, brand, name, category, status, image,  amount, price, salePrice, description} = {
+    })
     {
-        this.sku_id = sku_id;
+        this.id = id;
         this.brand = brand;
         this.name = name;
         this.category = category;
@@ -13,6 +13,8 @@ class Shoes {
         this.image = image;
         this.amount = amount;
         this.price = price;
+        this.salePrice = salePrice
+        this.description = description
     }
 }
 
