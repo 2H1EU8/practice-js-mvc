@@ -13,4 +13,7 @@
 .body__footer {
   background-color: $gray;
   padding: 24px 24px;
+
+  @include responsive('small') {
+  }
 }

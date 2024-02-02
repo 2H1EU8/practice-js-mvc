@@ -95,6 +95,9 @@
         }
       }
     }
+    @include responsive('small') {
+      gap: 12px;
+    }
   }
 
   &__gallery {
@@ -117,7 +120,10 @@
       }
 
       #para {
-        @include flex(flex, column);
+        @include flex(flex, column, center, center);
+        #imageUpload {
+          margin-top: 20px;
+        }
       }
     }
   }
@@ -128,7 +134,6 @@
 
     &--list {
       @include flex(flex, row, center);
-      gap: 16px;
       justify-content: space-around;
     }
 
@@ -150,12 +155,12 @@
     @include flex(flex, row, center);
     gap: 16px;
 
-    @media screen and (max-width: 475px) {
-      gap: 10px;
+    @media screen and (max-width: 560px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 25px;
     }
-    @media screen and (max-width: 420px) {
-      gap: 8px;
-    }
+
     button {
       text-transform: uppercase;
       border-radius: 8px;

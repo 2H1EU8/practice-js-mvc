@@ -47,6 +47,11 @@ table {
   .row {
     @include flex(flex, row, center);
     gap: 8px;
+    img {
+      width: 25px;
+      height: 25px;
+      border-radius: 15px;
+    }
   }
 
   th {
