@@ -1,7 +1,7 @@
-import config from "../api/config";
-import generateID from "../helper/sku_id";
 import validateFormPassword, { validateForm } from "../helper/validateForm";
 import Shoes from "../model/shoes.model";
+import { validateShoes } from "../helper/validateForm";
+
 
 
 class ShoesController {
@@ -138,18 +138,40 @@ class ShoesController {
             const price = document.getElementById('price').value;
             const salePrice = document.getElementById('sale-price').value;
 
-            this.userService.addShoes(new Shoes({brand, name, category, status: '', id, salePrice, amount, price, description, image: ''}))
-            .then(()=>{
-                alert("Add shoes successfully")
-                window.location.href = '/product/table';
-            })
-            .catch(err => {
-                console.error(err);
-                alert('Error adding shoes')
-            })
+            // this.userService.addShoes(new Shoes({brand, name, category, status: '', id, salePrice, amount, price, description, image: ''}))
+            // .then(()=>{
+            //     alert("Add shoes successfully")
+            //     window.location.href = '/product/table';
+            // })
+            // .catch(err => {
+            //     console.error(err);
+            //     alert('Error adding shoes')
 
-            
-
+            const image = document.getElementById('imageUpload');
+            var form = new FormData();
+            form.append("image", image.files[0])
+            fetch("https://api.imgbb.com/1/upload?key=12bf5830553fd071836060cc5f97b484", {
+                method : "POST",
+                body : form
+            })
+            .then(res => res.json())
+            .then(data => {
+                let imageUrl = data.data.url;
+                return imageUrl
+            })
+            .then((imageUrl) => {
+                //if(validateShoes()){
+                    this.userService.addShoes(new Shoes({brand, name, category, status: '', id, salePrice, amount, price, description, image: imageUrl}))
+                    .then(()=>{
+                        alert("Add shoes successfully")
+                        window.location.href = '/product/table';
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        alert('Error adding shoes')
+                    })
+                // }
+            })
         })
     }
 
@@ -164,18 +186,6 @@ class ShoesController {
         this.userView.bindTable(shoes)
     } 
 
-    // async submitForm() {
-    //     const formData = document.querySelector('.product__form');
-    //     console.log(formData);
-    
-    //     try {
-    //         const addedShoe = await userService.add(formData);
-    //         console.log('Shoes added successfully:', addedShoe);
-    //         await showTable();
-    //     } catch (error) {
-    //         console.error('Error adding shoes:', error);
-    //     }
-    // }
 
 
     // async bindRowClickEvent(){

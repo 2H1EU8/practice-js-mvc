@@ -12,6 +12,7 @@ const ProductImage = () => {
                     <div id="para">
                         <p>Drop your imager here, or browse</p>
                         <p>Jpeg, png are allowed</p>
+                        <input type="file" accept="image/*" id="imageUpload">
                     </div>
                 </div>
             </div>

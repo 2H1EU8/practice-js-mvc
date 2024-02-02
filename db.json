@@ -97,28 +97,28 @@
       "salePrice": 23
     },
     {
-      "id": 9,
-      "brand": "d",
-      "name": "cf",
+      "id": 14,
+      "brand": "hi i love dat",
+      "name": "ma",
       "category": "d",
       "status": "",
-      "image": "",
-      "amount": "3",
-      "price": "2",
-      "salePrice": "23",
-      "description": "d"
+      "image": "https://i.ibb.co/p19TCHV/dat.jpg",
+      "amount": "14",
+      "price": "45",
+      "salePrice": "45",
+      "description": "đ"
     },
     {
-      "id": 10,
-      "brand": "kksdk",
-      "name": "Adidas",
-      "category": "Rock",
+      "id": 15,
+      "brand": "day la dat",
+      "name": "dattt",
+      "category": "fsf",
       "status": "",
-      "image": "",
-      "amount": "333",
-      "price": "444",
-      "salePrice": "222",
-      "description": "i love you"
+      "image": "https://i.ibb.co/p19TCHV/dat.jpg",
+      "amount": "3",
+      "price": "3",
+      "salePrice": "565",
+      "description": "kakf"
     }
   ],
   "users": [
