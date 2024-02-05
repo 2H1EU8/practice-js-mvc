@@ -1,9 +1,9 @@
 const TableRow = (row) => {
   console.log(row);
   return `
-    <tr class="product-row" data-product-id="${row.product_id}">
+    <tr class="product-row">
       <td>
-        <input type="checkbox" />
+        <input type="checkbox" id="checkbox-${row.id}" class="product-checkbox"  />
       </td>
       <td>${row.name}</td>
       <td>${row.id}</td>

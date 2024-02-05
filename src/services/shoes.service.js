@@ -42,7 +42,6 @@ class ShoesService{
     }
 
     async changePassword(firstName,lastName, password, email, id){
-        console.log(firstName, lastName, password, email);
         try{
             config.patch(`/users/${id}`, {firstName, lastName, password, email})
         }catch(err){
@@ -65,7 +64,6 @@ class ShoesService{
 
     async addShoes(shoes){
         try {
-            console.log(shoes);
             const { data } = await config.post('/shoes', shoes);
             if (data) {
                 this.shoes.push(new Shoes(shoes));
@@ -74,6 +72,20 @@ class ShoesService{
             console.error('Error adding shoes:', error);
         }
     }
+
+    async updateShoes(id, newShoes){
+        try {
+            const { data } = await config.patch(`/shoes/${id}`, newShoes)
+            if(data){
+                this.shoes = this.shoes.map((shoes) =>
+                    shoes.id === id ? new Shoes({ ...shoes, ...newShoes }) : shoes,
+                );
+            }
+        } catch (error) {
+            console.error('Error updating shoes:', error)
+        }
+    }
+    
 }
 
 export default ShoesService

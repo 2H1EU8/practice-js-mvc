@@ -1,7 +1,7 @@
 import validateFormPassword, { validateForm } from "../helper/validateForm";
 import Shoes from "../model/shoes.model";
 import { validateShoes } from "../helper/validateForm";
-
+import { createToast } from "../views/modules/handleToast";
 
 
 class ShoesController {
@@ -76,7 +76,7 @@ class ShoesController {
                     alert("Register successfully")
                     window.location.href = '/login';
                 })
-                .catch(err => {
+                .catch((err) => {
                     console.error(err);
                     alert('Error registering user')
                 })
@@ -137,30 +137,21 @@ class ShoesController {
             const amount = document.getElementById('amount').value;
             const price = document.getElementById('price').value;
             const salePrice = document.getElementById('sale-price').value;
-
-            // this.userService.addShoes(new Shoes({brand, name, category, status: '', id, salePrice, amount, price, description, image: ''}))
-            // .then(()=>{
-            //     alert("Add shoes successfully")
-            //     window.location.href = '/product/table';
-            // })
-            // .catch(err => {
-            //     console.error(err);
-            //     alert('Error adding shoes')
-
             const image = document.getElementById('imageUpload');
-            var form = new FormData();
-            form.append("image", image.files[0])
-            fetch("https://api.imgbb.com/1/upload?key=12bf5830553fd071836060cc5f97b484", {
-                method : "POST",
-                body : form
-            })
-            .then(res => res.json())
-            .then(data => {
-                let imageUrl = data.data.url;
-                return imageUrl
-            })
-            .then((imageUrl) => {
-                //if(validateShoes()){
+
+            if (!validateShoes()) {
+                var form = new FormData();
+                form.append("image", image.files[0])
+                fetch("https://api.imgbb.com/1/upload?key=12bf5830553fd071836060cc5f97b484", {
+                    method : "POST",
+                    body : form
+                })
+                .then(res => res.json())
+                .then(data => {
+                    let imageUrl = data.data.url;
+                    return imageUrl
+                })
+                .then((imageUrl) => {
                     this.userService.addShoes(new Shoes({brand, name, category, status: '', id, salePrice, amount, price, description, image: imageUrl}))
                     .then(()=>{
                         alert("Add shoes successfully")
@@ -170,11 +161,23 @@ class ShoesController {
                         console.error(err);
                         alert('Error adding shoes')
                     })
-                // }
-            })
+                })
+            } else {
+                alert("Error");
+            }
         })
     }
 
+    // async updateTable(id, newShoes) {
+    //     try {
+    //         await this.userService.updateShoes(id, newShoes);
+    //         alert('Update shoes successfully');
+    //         window.location.href = '/product/table';
+    //     } catch (error) {
+    //         console.error('Error updating shoes:', error);
+    //         alert('Error updating shoes');
+    //     }
+    // }
 
 
     async showTable() {
@@ -184,19 +187,23 @@ class ShoesController {
             shoes = await this.userService.getAllShoes().then(data => data)
         }
         this.userView.bindTable(shoes)
+        
+        // Add event listener for checkbox clicks
+        // const checkboxes = document.querySelectorAll('.product-checkbox');
+        // checkboxes.forEach(checkbox => {
+        //     checkbox.addEventListener('change', () => {
+        //         this.updateTableBasedOnCheckboxes();
+        //     });
+        // });
     } 
 
-
-
-    // async bindRowClickEvent(){
-    //     const tableBody = document.querySelector('.table-content table tbody');
-    //     tableBody.addEventListener('click', (event) => {
-    //         const clickedRow = event.target.closest('.product-row');
-    //         if (clickedRow) {
-    //             const productId = clickedRow.dataset.productId;
-    //             window.location.href = `/product/detail?id=${productId}`;
-    //         }
+    // updateTableBasedOnCheckboxes() {
+    //     const checkedCheckboxes = document.querySelectorAll('.product-checkbox:checked');
+    //     const selectedProductIds = Array.from(checkedCheckboxes).map(checkbox => {
+    //         const row = checkbox.closest('.product-row');
+    //         return row.dataset.productId;
     //     });
+
     // }
 }
 

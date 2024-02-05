@@ -25,6 +25,26 @@ export function validateForm(firstName = '', lastName = '', password = '', email
     return true;
 }
 
+export function validateShoes(){
+  const name = document.getElementById('name').value;
+  const description = document.getElementById('description').value;
+  const category = document.getElementById('category').value;
+  const brand = document.getElementById('brand').value;
+  const id = +document.getElementById('sku-id').value;
+  const amount = document.getElementById('amount').value;
+  const price = document.getElementById('price').value;
+  const salePrice = document.getElementById('sale-price').value;
+
+  const numericRegex = /^\d+$/;
+  if(!numericRegex.test(id) || (!numericRegex.test(amount))){
+    alert('Please enter number, can not use characters')
+  }
+
+  if(!name.trim()||!description.trim() || !category.trim() || !brand.trim() || !amount.trim() || !price.trim() || !salePrice.trim()){
+    alert('Please enter all fields in product detail');
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   // Password strength check
   var passwordInputs = document.querySelectorAll('.password');
