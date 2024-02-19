@@ -15,8 +15,12 @@ import changePassword from './pages/changePassword';
 class ShoesView {
   constructor() {
     this.app = document.querySelector('#root');
-    this.router = new Router()
+    this.router = new Router()  
     this.initRoute()
+    // add toast container
+    this.toastList = document.createElement('ul');
+    this.toastList.classList.add('notifications');
+    this.app.appendChild(this.toastList);
   }
 
   initRoute() {
