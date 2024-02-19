@@ -14,8 +14,6 @@ class ShoesController {
         this.showTable()
         this.changePassword()
         this.getTable()
-        this.updateTable()
-        this.deleteTable()
         
     }
 
@@ -192,64 +190,6 @@ class ShoesController {
             } else {
                 createToast('error', 'Error')
             }
-        })
-    }
-
-    updateTable() {
-        const updateShoes = document.getElementById('btn-update');
-        updateShoes.addEventListener('click', (e)=>{
-            const name = document.getElementById('name').value;
-            const description = document.getElementById('description').value;
-            const category = document.getElementById('category').value;
-            const brand = document.getElementById('brand').value;
-            const id = +document.getElementById('sku-id').value;
-            const amount = document.getElementById('amount').value;
-            const price = document.getElementById('price').value;
-            const salePrice = document.getElementById('sale-price').value;
-            const image = document.getElementById("imageUpload");
-
-            if(validateShoes()){
-                var form = new FormData();
-                form.append("image", image.files[0])
-                
-                fetch("https://api.imgbb.com/1/upload?key=12bf5830553fd071836060cc5f97b484", {
-                    method : "POST",
-                    body : form 
-                })
-                .then(res => res.json())
-                .then(data => {
-                    let imageUrl = data.data.url;
-                    return imageUrl
-                })
-                .then((imageUrl) => {
-                    this.userService.updateShoes(id, new Shoes({id, brand, category, description, name, amount, price, salePrice, image: imageUrl}));
-                    createToast('info', 'Update shoes succesfully')
-                    setTimeout(()=>{
-                        window.location.href = '/product/table';
-                    }, 3000)
-                })
-            }
-            else {
-                createToast('error', 'Error updating table')
-            }
-        })
-    }
-
-    deleteTable(){
-        const deleteShoes = document.getElementById('btn-delete');
-        deleteShoes.addEventListener('click', (e)=>{
-            const id = +document.getElementById('sku-id').value;    
-            // if(validateShoes()){
-                this.userService.deleteShoes(id);
-                createToast('info', 'Delete shoes succesfully')
-                setTimeout(()=>{
-                    window.location.href = '/product/table';
-                }, 3000)
-                
-            // }
-            // else {
-            //     createToast('error', 'Error deleting table')
-            // }
         })
     }
 
