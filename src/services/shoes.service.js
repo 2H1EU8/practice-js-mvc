@@ -1,5 +1,6 @@
 import config from "../api/config";
 import Shoes from "../model/shoes.model";
+import { createToast } from "../views/modules/handleToast";
 
 class ShoesService{
     constructor(){
@@ -29,7 +30,7 @@ class ShoesService{
                 return null;
             }
         } catch (error) {
-            console.error('Error fetching user:', error);
+            createToast('error', 'Error fetching user');
         }
     }
 
@@ -37,7 +38,7 @@ class ShoesService{
         try {
             config.post('/users', {firstName, lastName, email, password})
         } catch (error) {
-            console.error('Error fetching user:', error);
+            createToast('error', 'Error fetching user');
         }
     }
 
@@ -45,7 +46,7 @@ class ShoesService{
         try{
             config.patch(`/users/${id}`, {firstName, lastName, password, email})
         }catch(err){
-            console.error('Error fetching password again:', err)
+            createToast('error', 'Error fetching password again');
         }
     }
 
@@ -57,7 +58,7 @@ class ShoesService{
                 return this.shoes
             }
         } catch (error) {
-            console.error('Error fetching shoes:', error);
+            createToast('error', 'Error fetching shoes');
         }
     }
 
@@ -69,7 +70,7 @@ class ShoesService{
                 this.shoes.push(new Shoes(shoes));
             }
         } catch (error) {
-            console.error('Error adding shoes:', error);
+            createToast('error', 'Error adding shoes');
         }
     }
 
@@ -82,9 +83,25 @@ class ShoesService{
                 );
             }
         } catch (error) {
-            console.error('Error updating shoes:', error)
+            createToast('error', 'Error updating shoes');
         }
     }
+
+    async deleteShoes(id){
+        try {
+            const { data } = await config.delete(`/shoes/${id}`,{
+                params:{
+                    id
+                }
+            })
+            if(data) {
+                this.shoes = this.shoes.filter((shoes)=>shoes.id !== id)
+            }
+        } catch(error){
+            createToast('error', 'Error deleting shoes')
+        }
+    }
+
     
 }
 

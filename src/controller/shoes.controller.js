@@ -14,6 +14,9 @@ class ShoesController {
         this.showTable()
         this.changePassword()
         this.getTable()
+        this.updateTable()
+        this.deleteTable()
+        
     }
 
     login() {
@@ -26,7 +29,7 @@ class ShoesController {
             const accepts = document.querySelectorAll('input[type]:checked')
 
             if (accepts?.length < 1) {
-                alert('You need to agree policy')
+                createToast('warning', 'You need to agree policy');
                 return
             }
 
@@ -38,13 +41,15 @@ class ShoesController {
                     const {password, ...others} = users
 
                     localStorage.setItem('users', JSON.stringify(others));
+                    
+                    createToast('info', 'Login successfully');
 
-                    alert('Login successfully');
+                    setTimeout(()=>{
+                        window.location.href = '/product/table';
+                    }, 5000);
 
-
-                    window.location.href = '/product/table';
                 } else {
-                    alert('User not found');
+                    createToast('error', 'User not found')
                 }
             } catch (err) {
                 console.log(err);
@@ -66,19 +71,21 @@ class ShoesController {
 
             const accepts = document.querySelectorAll('input[type]:checked')
             if (accepts?.length < 2) {
-                alert('You need to agree policy')
+                createToast('warning', 'You need to agree policy');
                 return
             }
 
             if (validateForm(firstName, lastName, password, email)) {
                 this.userService.addUser(firstName, lastName, email, password)
                 .then(()=>{
-                    alert("Register successfully")
-                    window.location.href = '/login';
+                    createToast('info', 'Register successfully');
+                    setTimeout(()=>{
+                        window.location.href = '/login';
+                    }, 5000);
                 })
                 .catch((err) => {
                     console.error(err);
-                    alert('Error registering user')
+                    createToast('error', 'Error registering user');
                 })
             }
         })
@@ -99,12 +106,14 @@ class ShoesController {
                 console.log(password, repassword);
                 this.userService.changePassword(user.firstName, user.lastName, repassword, user.email, user.id)
                 .then(()=>{
-                    alert('Change password sucessfully');
-                    window.location.pathname = "/product/table"
+                    createToast('info', 'Change password sucessfully');
+                    setTimeout(()=>{
+                        window.location.pathname = "/product/table"
+                    })
                 })
                 .catch((err)=>{
                     console.error(err)
-                    alert('Error. Please enter again');
+                    createToast('warning', 'Error. Please enter again');
                 })
             }
         })
@@ -128,7 +137,21 @@ class ShoesController {
 
     getTable(){
         const addShoes = document.getElementById('btn-add')
-        addShoes.addEventListener('click', async () => {
+        const image = document.getElementById("imageUpload");
+        console.log(image);
+        const imagePreview = document.querySelectorAll(".img-preview");
+
+        console.log(imagePreview);
+        image.addEventListener("change", (e) => {
+            console.log(e);
+            if (e.target.files.length) {
+                const src = URL.createObjectURL(e.target.files[0]);
+                imagePreview.forEach(img =>{
+                    img.src = src;
+                })
+            }
+        });
+        addShoes.addEventListener('click', async (e) => {
             const name = document.getElementById('name').value;
             const description = document.getElementById('description').value;
             const category = document.getElementById('category').value;
@@ -137,14 +160,16 @@ class ShoesController {
             const amount = document.getElementById('amount').value;
             const price = document.getElementById('price').value;
             const salePrice = document.getElementById('sale-price').value;
-            const image = document.getElementById('imageUpload');
-
-            if (!validateShoes()) {
+            const image = document.getElementById("imageUpload");
+            
+            
+            if (validateShoes()) {
                 var form = new FormData();
                 form.append("image", image.files[0])
+                
                 fetch("https://api.imgbb.com/1/upload?key=12bf5830553fd071836060cc5f97b484", {
                     method : "POST",
-                    body : form
+                    body : form 
                 })
                 .then(res => res.json())
                 .then(data => {
@@ -154,30 +179,79 @@ class ShoesController {
                 .then((imageUrl) => {
                     this.userService.addShoes(new Shoes({brand, name, category, status: '', id, salePrice, amount, price, description, image: imageUrl}))
                     .then(()=>{
-                        alert("Add shoes successfully")
-                        window.location.href = '/product/table';
+                        createToast('info', "Add shoes successfully");
+                        setTimeout(()=>{
+                            window.location.href = '/product/table';
+                        }, 3000);
                     })
                     .catch(err => {
                         console.error(err);
-                        alert('Error adding shoes')
+                        createToast('error','Error adding shoes');
                     })
                 })
             } else {
-                alert("Error");
+                createToast('error', 'Error')
             }
         })
     }
 
-    // async updateTable(id, newShoes) {
-    //     try {
-    //         await this.userService.updateShoes(id, newShoes);
-    //         alert('Update shoes successfully');
-    //         window.location.href = '/product/table';
-    //     } catch (error) {
-    //         console.error('Error updating shoes:', error);
-    //         alert('Error updating shoes');
-    //     }
-    // }
+    updateTable() {
+        const updateShoes = document.getElementById('btn-update');
+        updateShoes.addEventListener('click', (e)=>{
+            const name = document.getElementById('name').value;
+            const description = document.getElementById('description').value;
+            const category = document.getElementById('category').value;
+            const brand = document.getElementById('brand').value;
+            const id = +document.getElementById('sku-id').value;
+            const amount = document.getElementById('amount').value;
+            const price = document.getElementById('price').value;
+            const salePrice = document.getElementById('sale-price').value;
+            const image = document.getElementById("imageUpload");
+
+            if(validateShoes()){
+                var form = new FormData();
+                form.append("image", image.files[0])
+                
+                fetch("https://api.imgbb.com/1/upload?key=12bf5830553fd071836060cc5f97b484", {
+                    method : "POST",
+                    body : form 
+                })
+                .then(res => res.json())
+                .then(data => {
+                    let imageUrl = data.data.url;
+                    return imageUrl
+                })
+                .then((imageUrl) => {
+                    this.userService.updateShoes(id, new Shoes({id, brand, category, description, name, amount, price, salePrice, image: imageUrl}));
+                    createToast('info', 'Update shoes succesfully')
+                    setTimeout(()=>{
+                        window.location.href = '/product/table';
+                    }, 3000)
+                })
+            }
+            else {
+                createToast('error', 'Error updating table')
+            }
+        })
+    }
+
+    deleteTable(){
+        const deleteShoes = document.getElementById('btn-delete');
+        deleteShoes.addEventListener('click', (e)=>{
+            const id = +document.getElementById('sku-id').value;    
+            // if(validateShoes()){
+                this.userService.deleteShoes(id);
+                createToast('info', 'Delete shoes succesfully')
+                setTimeout(()=>{
+                    window.location.href = '/product/table';
+                }, 3000)
+                
+            // }
+            // else {
+            //     createToast('error', 'Error deleting table')
+            // }
+        })
+    }
 
 
     async showTable() {
@@ -188,23 +262,15 @@ class ShoesController {
         }
         this.userView.bindTable(shoes)
         
-        // Add event listener for checkbox clicks
-        // const checkboxes = document.querySelectorAll('.product-checkbox');
-        // checkboxes.forEach(checkbox => {
-        //     checkbox.addEventListener('change', () => {
-        //         this.updateTableBasedOnCheckboxes();
-        //     });
-        // });
-    } 
-
-    // updateTableBasedOnCheckboxes() {
-    //     const checkedCheckboxes = document.querySelectorAll('.product-checkbox:checked');
-    //     const selectedProductIds = Array.from(checkedCheckboxes).map(checkbox => {
-    //         const row = checkbox.closest('.product-row');
-    //         return row.dataset.productId;
-    //     });
-
-    // }
+        const tableRows = document.querySelectorAll('.product-row');
+        tableRows.forEach(row => {
+            row.addEventListener('click', e => {
+                this.id = e.target.closest('.product-row').id;
+                window.location.href = '/product/detail';
+            })
+        })
+    }     
+    
 }
 
 export default ShoesController

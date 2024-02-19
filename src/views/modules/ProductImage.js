@@ -7,20 +7,20 @@ const ProductImage = () => {
 
             <div class="product__gallery">
                 <h3>Product Gallery</h3>
-                <div class="product__gallery--img">
+                <label for="imageUpload" class="product__gallery--img">
                     <img src="/ph_image-light.d6655624.svg" alt="" />
                     <div id="para">
                         <p>Drop your imager here, or browse</p>
                         <p>Jpeg, png are allowed</p>
-                        <input type="file" accept="image/*" id="imageUpload">
+                        <input hidden type="file" accept="image/*" id="imageUpload">
                     </div>
-                </div>
+                </label>
             </div>
 
             <div class="product__thumbnail">
                 <div class="product__thumbnail--list">
-                    <figure>
-                    <img src="/orange-shoes.71d5365a.jpg" alt="" />
+                <figure>  
+                <img class="img-preview" src="/orange-shoes.71d5365a.jpg" alt="" />
                     </figure>
                     <div class="product__thumbnail--detail">
                     <p>Product thumbnail.png</p>
@@ -30,8 +30,8 @@ const ProductImage = () => {
                 </div>
 
                 <div class="product__thumbnail--list">
-                    <figure>
-                    <img src="/orange-shoes.71d5365a.jpg" alt="" />
+                <figure>
+                <img class="img-preview" src="/orange-shoes.71d5365a.jpg" alt="" />
                     </figure>
                     <div class="product__thumbnail--detail">
                     <p>Product thumbnail.png</p>
@@ -41,8 +41,8 @@ const ProductImage = () => {
                 </div>
 
                 <div class="product__thumbnail--list">
-                    <figure>
-                    <img src="/orange-shoes.71d5365a.jpg" alt="" />
+                <figure>
+                <img class="img-preview" src="/orange-shoes.71d5365a.jpg" alt="" />
                     </figure>
                     <div class="product__thumbnail--detail">
                     <p>Product thumbnail.png</p>
@@ -52,8 +52,8 @@ const ProductImage = () => {
                 </div>
 
                 <div class="product__thumbnail--list">
-                    <figure>
-                    <img src="/orange-shoes.71d5365a.jpg" alt="" />
+                <figure>
+                <img class="img-preview" src="/orange-shoes.71d5365a.jpg" alt="" />
                     </figure>
                     <div class="product__thumbnail--detail">
                     <p>Product thumbnail.png</p>

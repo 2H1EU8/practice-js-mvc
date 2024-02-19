@@ -3,14 +3,14 @@
     {
       "image": "/avt-1.3cd62d23.jpg",
       "id": 1,
-      "brand": "Bressi Cooper",
-      "name": "adidas",
-      "category": "PayPal",
+      "brand": "FEKKMR",
+      "name": "do homework part 2",
+      "category": "rrrrrrrr 4",
       "status": false,
-      "amount": 70,
-      "price": 169,
-      "description": "abcde",
-      "salePrice": 23
+      "amount": "445",
+      "price": "345",
+      "description": "efffffff",
+      "salePrice": "36464"
     },
     {
       "image": "/avt-2.3bdfd00a.jpg",
@@ -49,7 +49,7 @@
       "salePrice": 23
     },
     {
-      "image": "/avt-4.3ec10eec.jpg",
+      "image": "/avt-5.2cf0b3dd.jpg",
       "id": 5,
       "brand": "Bressi Cooper",
       "name": "adidas",
@@ -61,7 +61,7 @@
       "salePrice": 23
     },
     {
-      "image": "/avt-4.3ec10eec.jpg",
+      "image": "/avt-6.46dd4531.jpg",
       "id": 6,
       "brand": "Bressi Cooper",
       "name": "adidas",
@@ -73,7 +73,7 @@
       "salePrice": 23
     },
     {
-      "image": "/avt-4.3ec10eec.jpg",
+      "image": "/avt-3-7.60b9b0ce.jpg",
       "id": 7,
       "brand": "Bressi Cooper",
       "name": "adidas",
@@ -85,12 +85,12 @@
       "salePrice": 23
     },
     {
-      "image": "/avt-4.3ec10eec.jpg",
+      "image": "/avt-8.cfd948c3.jpg",
       "id": 8,
       "brand": "Bressi Cooper",
       "name": "adidas",
       "category": "PayPal",
-      "status": false,
+      "status": true,
       "amount": 70,
       "price": 169,
       "description": "abcde",
