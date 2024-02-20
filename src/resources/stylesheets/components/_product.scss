@@ -135,6 +135,10 @@
     &--list {
       @include flex(flex, row, center);
       justify-content: space-around;
+      .img-preview {
+        width: 64px;
+        height: 64px;
+      }
     }
 
     &--detail {

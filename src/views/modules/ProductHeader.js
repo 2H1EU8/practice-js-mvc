@@ -7,9 +7,6 @@ const ProductHeader = () => {
         <div class="table__header--btn">
           <select name="" id="">
             <option value="">Change Status</option>
-            <option value="add">Add</option>
-            <option value="update">Edit</option>
-            <option value="delete">Delete</option>
             <option value="checkStock">Stock</option>
             <option value="checkSoldout">Sold out</option>
           </select>
