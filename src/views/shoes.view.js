@@ -8,7 +8,7 @@ import ShoesTable from './modules/ShoesTable';
 import ProductHeader from './modules/ProductHeader';
 import ProductDetail from './modules/ProductDetail';
 import ProductHeader_2 from './modules/ProductHeader_2';
-import Router from '../utils/routes';
+import Router from '../routes';
 import TableBody from './modules/TableRow';
 import changePassword from './pages/changePassword';
 
