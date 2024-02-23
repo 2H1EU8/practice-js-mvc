@@ -16,6 +16,10 @@ class ShoesController {
         this.getTable()
         this.updateTable()
         this.deleteTable()
+
+        const storedUser = localStorage.getItem('users');
+        const user = storedUser ? JSON.parse(storedUser) : null;
+        this.bindNotification(user.notifications);
         
     }
 
@@ -39,6 +43,8 @@ class ShoesController {
                 if (users) {
 
                     const {password, ...others} = users
+
+                    console.log(others);
 
                     localStorage.setItem('users', JSON.stringify(others));
                     
@@ -188,11 +194,27 @@ class ShoesController {
                         console.error(err);
                         createToast('error','Error adding shoes');
                     })
+                    const storedUser = localStorage.getItem('users');
+                    const user = storedUser ? JSON.parse(storedUser) : null;
+                    const currentTime = new Date().toLocaleString(); 
+                    console.log(user);
+                    user.notifications.push(`You added product at ${currentTime}`);
+                    console.log(user);
+                    this.userService.addNoti(user.id, user.notifications);
+                    localStorage.setItem('users', JSON.stringify(user));
                 })
             } else {
                 createToast('error', 'Error')
             }
         })
+    }
+
+    bindNotification(notification =[]){
+        const updateNoti = document.querySelector(".noti-list");
+        const notiList = notification.map(noti =>{
+            return `<p class="noti-para">${noti}</p>`
+        }).join('')
+        updateNoti.innerHTML = notiList;
     }
 
     updateTable() {
