@@ -9,7 +9,11 @@ const Header = () => {
         return `
             <header id="header-container" class="header">
                 <img src="/search.171c0435.svg" alt="" />
-                <img src="/notifications.8b2852f2.svg" alt="" />
+                <figure class="noti-btn">
+                    <img src="/notifications.8b2852f2.svg" alt="" />
+                    <figcaption class="noti-list">
+                    </figcaption>
+                </figure>
                 <select class="header__select">
                     <option value="">${userName}</option>
                     <option value="logout">Log Out</option>
@@ -23,6 +27,7 @@ const Header = () => {
             <header id="header-container" class="header">
                 <img src="/search.171c0435.svg" alt="" />
                 <img src="/notifications.8b2852f2.svg" alt="" />
+                
                 <button class="header__button">
                     <a href="/login">Log in </a>
                 </button>

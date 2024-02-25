@@ -119,6 +119,18 @@
       "price": "3",
       "salePrice": "565",
       "description": "kakf"
+    },
+    {
+      "id": 55,
+      "brand": "15 promax",
+      "name": "iphone",
+      "category": "phone",
+      "status": "",
+      "image": "https://i.ibb.co/Gv96qsd/ip-white.webp",
+      "amount": "324",
+      "price": "334",
+      "salePrice": "22",
+      "description": "8gb ram "
     }
   ],
   "users": [
@@ -127,70 +139,84 @@
       "email": "admin@gmail.com",
       "password": "Man@vku2233",
       "firstName": "Marry",
-      "lastName": "Ryan"
+      "lastName": "Ryan",
+      "notifications": []
     },
     {
       "id": 2,
       "email": "test@gmail.com",
       "password": "Man@vku2233",
       "firstName": "Marry",
-      "lastName": "Ryan"
+      "lastName": "Ryan",
+      "notifications": []
     },
     {
       "id": 3,
       "email": "test@gmail.com",
       "password": "Man@vku2233",
       "firstName": "Marry",
-      "lastName": "Ryan"
+      "lastName": "Ryan",
+      "notifications": []
     },
     {
       "firstName": "Marry",
       "lastName": "Ryan",
       "email": "admin@gmail.com",
       "password": "Man@vku2233",
-      "id": 4
+      "id": 4,
+      "notifications": []
     },
     {
       "firstName": "Marry",
       "lastName": "Ryan",
       "email": "15066570@dnu.edu.vn",
       "password": "Man@vku2233",
-      "id": 5
+      "id": 5,
+      "notifications": []
     },
     {
       "firstName": "Tran",
       "lastName": "Man",
       "email": "manmantran169@gmail.com",
       "password": "Tranman@2004",
-      "id": 6
+      "id": 6,
+      "notifications": []
     },
     {
       "firstName": "ffff",
       "lastName": "ss",
       "email": "mantm.22ite@vku.udn.vn",
       "password": "Tam@1234",
-      "id": 7
+      "id": 7,
+      "notifications": []
     },
     {
       "firstName": "Dat",
       "lastName": "Ngo",
       "email": "dat@gmail.com",
       "password": "Dat@12345",
-      "id": 8
+      "id": 8,
+      "notifications": []
     },
     {
       "firstName": "Hoa",
       "lastName": "Tran",
       "email": "hoa@gmail.com",
       "password": "Hoa@12345",
-      "id": 9
+      "id": 9,
+      "notifications": []
     },
     {
       "firstName": "Thuyen",
       "lastName": "Yiwei",
       "email": "yiwei@gmail.com",
       "password": "Yiwei@12345",
-      "id": 10
+      "id": 10,
+      "notifications": [],
+      "notification": [
+        "You added product at 2/22/2024, 9:02:18 PM",
+        "You added product at 2/22/2024, 9:06:37 PM"
+      ]
     }
   ]
 }
