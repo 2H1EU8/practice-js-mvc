@@ -35,6 +35,7 @@ Small CRUD project implement JS knowledge. Get familiar with DOM, API, Axios, ..
 
 ```sh
 cd practice-js-mvc
+rm -rf package-lock.json
 npm i
 npm run watchDB
 
