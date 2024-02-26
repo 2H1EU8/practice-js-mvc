@@ -1,6 +1,5 @@
 import config from "../api/config";
 import Shoes from "../model/shoes.model";
-import User from "../model/user.model";
 import { createToast } from "../views/modules/handleToast";
 
 class ShoesService{
@@ -44,9 +43,9 @@ class ShoesService{
         }
     }
 
-    async addNoti(id, notification){
+    async addNoti(id, notifications){
         try {
-            config.patch(`/users/${id}`, {notification})
+            config.patch(`/users/${id}`, {notifications})
         } catch (error) {
             createToast('error', 'Error fetching user to notification');
         }
@@ -112,9 +111,18 @@ class ShoesService{
         }
     }
 
-    
-
-    
+    async searchShoes(name) {
+        try {
+            const { data } = await config.get('/shoes', {
+                params: {
+                    q: name
+                }
+            });
+            return data;
+        } catch (error) {
+            createToast('error', 'Error searching shoes');
+        }
+    }
 }
 
 export default ShoesService

@@ -8,7 +8,12 @@ const Header = () => {
 
         return `
             <header id="header-container" class="header">
-                <img src="/search.171c0435.svg" alt="" />
+                <div id="searchBox" class="header__search hidden">
+                    <input class="header__search--input" id="searchInput" type="text" placeholder="Search...">
+                    <figure>
+                        <img id="searchIcon" src="/search.171c0435.svg" alt="" />
+                    </figure>
+                </div>  
                 <figure class="noti-btn">
                     <img src="/notifications.8b2852f2.svg" alt="" />
                     <figcaption class="noti-list">

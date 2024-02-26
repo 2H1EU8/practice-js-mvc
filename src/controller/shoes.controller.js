@@ -16,6 +16,7 @@ class ShoesController {
         this.getTable()
         this.updateTable()
         this.deleteTable()
+        this.handleSearch()
 
         const storedUser = localStorage.getItem('users');
         const user = storedUser ? JSON.parse(storedUser) : null;
@@ -144,10 +145,8 @@ class ShoesController {
     getTable(){
         const addShoes = document.getElementById('btn-add')
         const image = document.getElementById("imageUpload");
-        console.log(image);
         const imagePreview = document.querySelectorAll(".img-preview");
 
-        console.log(imagePreview);
         image.addEventListener("change", (e) => {
             console.log(e);
             if (e.target.files.length) {
@@ -198,7 +197,7 @@ class ShoesController {
                     const user = storedUser ? JSON.parse(storedUser) : null;
                     const currentTime = new Date().toLocaleString(); 
                     console.log(user);
-                    user.notifications.push(`You added product at ${currentTime}`);
+                    user.notifications.push(`You added ${name} at ${currentTime}`);
                     console.log(user);
                     this.userService.addNoti(user.id, user.notifications);
                     localStorage.setItem('users', JSON.stringify(user));
@@ -213,7 +212,7 @@ class ShoesController {
         const updateNoti = document.querySelector(".noti-list");
         const notiList = notification.map(noti =>{
             return `<p class="noti-para">${noti}</p>`
-        }).join('')
+        }).join()
         updateNoti.innerHTML = notiList;
     }
 
@@ -275,6 +274,25 @@ class ShoesController {
         })
     }
 
+    handleSearch(){
+        const searchIcon = document.getElementById("searchIcon");
+        const searchBoxLayout = document.querySelector(".header__search--input");
+        const searchInput = document.getElementById("searchInput");
+        console.log(searchInput);
+        searchIcon.addEventListener('click', () => {
+            searchBoxLayout.classList.toggle('show');
+        });
+
+        searchInput.addEventListener('input', (event) => {
+            const searchTerm = event.target.value.trim();
+            if (searchTerm.length > 0) {
+                this.userService.searchShoes(searchTerm);
+                this.userView.bindTable(this.userService.searchShoes(searchTerm));
+            } else {
+                console.log('Please enter keyword to find.');
+            }
+        });
+    }
 
     async showTable() {
         const user = localStorage.getItem('users')
@@ -292,7 +310,6 @@ class ShoesController {
             })
         })
     }     
-    
 }
 
 export default ShoesController
