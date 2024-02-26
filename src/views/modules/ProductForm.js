@@ -3,42 +3,42 @@ const ProductForm = () => {
         <div class="product__form">
             <div class="product__form--item">
                 <h3>Product name</h3>
-                <input id="name" type="text" placeholder="Adidas Ultra boost"/>
+                <input class="restore-value" id="name" type="text" placeholder="Adidas Ultra boost"/>
             </div>
 
             <div class="product__form--item">
                 <h3>Description</h3>
-                <textarea id="description"  placeholder="Long distance running requires a lot from athletes."></textarea>
+                <input class="restore-value" id="description"  placeholder="Long distance running requires a lot from athletes."></input>
             </div>
 
             <div class="product__form--item">
                 <h3>Category</h3>
-                <input id="category" type="text" placeholder="Sneaker" />
+                <input class="restore-value" id="category" type="text" placeholder="Sneaker" />
             </div>
 
             <div class="product__form--item">
                 <h3>Brand Name</h3>
-                <input id="brand" type="text" placeholder="Addidas" />
+                <input class="restore-value" id="brand" type="text" placeholder="Addidas" />
             </div>
 
             <div class="product__form--row">
                 <div class="product__form--item">
                     <h3>SKU</h3>
-                    <input id="sku-id" type="text" />
+                    <input class="restore-value" id="sku-id" type="text" />
                 </div>
                 <div class="product__form--item">
                     <h3>Stock Quantity</h3>
-                    <input id="amount" type="text" placeholder="21" />
+                    <input class="restore-value" id="amount" type="text" placeholder="21" />
                 </div>
             </div>
             <div class="product__form--row">
                 <div class="product__form--item">
                     <h3>Regular Price</h3>
-                    <input id="price" type="text" placeholder="$110.40" />
+                    <input class="restore-value" id="price" type="text" placeholder="$110.40" />
                 </div>
                 <div class="product__form--item">
                     <h3>Sale Price</h3>
-                    <input id="sale-price" type="text" placeholder="$450" />
+                    <input class="restore-value" id="sale-price" type="text" placeholder="$450" />
                 </div>
             </div>
 

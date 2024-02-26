@@ -131,6 +131,78 @@
       "price": "334",
       "salePrice": "22",
       "description": "8gb ram "
+    },
+    {
+      "id": 99,
+      "brand": "Senaetr",
+      "name": "do homework part 2",
+      "category": "sg 5 ",
+      "status": "",
+      "image": "https://i.ibb.co/kcpNzhH/Screenshot-from-2024-02-22-13-44-12.png",
+      "amount": "99",
+      "price": "499",
+      "salePrice": "435",
+      "description": "fa wt 5"
+    },
+    {
+      "id": 88,
+      "brand": "Phone",
+      "name": "iphone",
+      "category": "Iphone Pro Max",
+      "status": "",
+      "image": "https://i.ibb.co/ZKM447v/ip14-3.webp",
+      "amount": "23",
+      "price": "35",
+      "salePrice": "22",
+      "description": "ís best for us"
+    },
+    {
+      "id": 34,
+      "brand": "ege",
+      "name": "iphone X",
+      "category": "egehw",
+      "status": "",
+      "image": "https://i.ibb.co/c30yP65/Screenshot-from-2024-02-24-20-12-36.png",
+      "amount": "34",
+      "price": "34",
+      "salePrice": "33",
+      "description": "feqfeefe"
+    },
+    {
+      "id": 28,
+      "brand": "ios",
+      "name": "iphone 14 promax",
+      "category": "phone",
+      "status": "",
+      "image": "https://i.ibb.co/3R370K0/ip14-black.webp",
+      "amount": "40",
+      "price": "$910",
+      "salePrice": "$870",
+      "description": "one of the most famous products attracts people\nram 8gb "
+    },
+    {
+      "id": 100,
+      "brand": "rg r4",
+      "name": "wfq",
+      "category": "weggw 3",
+      "status": "",
+      "image": "https://i.ibb.co/TKNHTQG/Screenshot-from-2024-02-24-20-50-40.png",
+      "amount": "1",
+      "price": "1",
+      "salePrice": "1",
+      "description": "wrqrrrr"
+    },
+    {
+      "id": 233,
+      "brand": "afllf 5",
+      "name": "ma",
+      "category": "fell5",
+      "status": "",
+      "image": "https://i.ibb.co/Yk4HSZs/Screenshot-from-2024-02-25-01-11-21.png",
+      "amount": "3",
+      "price": "3",
+      "salePrice": "3",
+      "description": "efq f"
     }
   ],
   "users": [
@@ -212,10 +284,8 @@
       "email": "yiwei@gmail.com",
       "password": "Yiwei@12345",
       "id": 10,
-      "notifications": [],
-      "notification": [
-        "You added product at 2/22/2024, 9:02:18 PM",
-        "You added product at 2/22/2024, 9:06:37 PM"
+      "notifications": [
+        "You added iphone 14 promax at 2/24/2024, 8:31:18 PM"
       ]
     }
   ]
