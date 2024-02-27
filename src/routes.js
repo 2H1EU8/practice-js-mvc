@@ -5,24 +5,50 @@ class Router {
     }
 
     // Define a new route with a regular expression pattern
-    define(path, element) {
-        this.routes.push({path, element})
+    define(path, element, params = []) {
+        // Convert path to a regex pattern
+        const pattern = new RegExp('^' + path.replace(/:[^\s/]+/g, '([\\w-]+)') + '$');
+
+        // Store route with pattern and element
+        this.routes.push({ pattern, element, params });
     }
 
     // Listen for changes in the URL
     listen() {
-        const path = window.location.pathname
-        const element = this.routes.find(route => route.path === path).element
+        const path = window.location.pathname;
 
-        const root = document.getElementById('root')
+        // Find matching route
+        const route = this.routes.find(route => route.pattern.test(path));
 
-        if (typeof element === 'string') {
-            root.innerHTML = element
+        if (route) {
+            const params = this.extractParams(path, route.pattern, route.params);
+            const element = typeof route.element === 'function' ? route.element(params) : route.element;
+
+            const root = document.getElementById('root');
+
+            if (typeof element === 'string') {
+                root.innerHTML = element;
+            } else {
+                root.appendChild(element);
+            }
+        } else {
+            console.error('No matching route found.');
         }
-        else {
-            root.appendChild(element)
+    }
+
+    // Extract parameters from the path
+    extractParams(path, pattern, paramNames) {
+        const matches = path.match(pattern);
+        const params = {};
+
+        if (matches && paramNames.length === matches.length - 1) {
+            paramNames.forEach((name, index) => {
+                params[name] = matches[index + 1];
+            });
         }
+
+        return params;
     }
 }
 
-export default Router
+export default Router;
