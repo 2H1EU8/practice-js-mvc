@@ -67,10 +67,25 @@ class ShoesService{
                 return this.shoes
             }
         } catch (error) {
-            createToast('error', 'Error fetching shoes');
+            createToast('error', 'Error fetching all shoes');
         }
     }
 
+    async getShoes(id) {
+        try {
+            const { data } = await config.get(`/shoes/{id}`, {
+                params:{
+                    id,
+                }
+            });
+            if (data){
+                this.shoes = data;
+            } 
+            return data[0];
+        } catch (error) {
+            createToast('error', 'Error fetching shoes by id');
+        }
+    }
 
     async addShoes(shoes){
         try {
@@ -118,6 +133,7 @@ class ShoesService{
                     q: name
                 }
             });
+            console.log(data);
             return data;
         } catch (error) {
             createToast('error', 'Error searching shoes');
