@@ -18,12 +18,13 @@ class ShoesController {
         this.deleteTable()
         this.cancelShoes()
         this.handleSearch()
+        this.loadShoesSelected()
 
         const storedUser = localStorage.getItem('users');
         const user = storedUser ? JSON.parse(storedUser) : null;
         this.bindNotification(user.notifications);
-      
-    }
+        
+    }   
 
     login() {
         this.formLogin = document.querySelector('.form__right');
@@ -261,17 +262,17 @@ class ShoesController {
         const deleteShoes = document.getElementById('btn-delete');
         deleteShoes?.addEventListener('click', (e)=>{
             const id = +document.getElementById('sku-id').value;    
-            // if(validateShoes()){
+            if(validateShoes()){
                 this.userService.deleteShoes(id);
                 createToast('info', 'Delete shoes succesfully')
                 setTimeout(()=>{
                     window.location.href = '/product/table';
                 }, 3000)
                 
-            // }
-            // else {
-            //     createToast('error', 'Error deleting table')
-            // }
+            }
+            else {
+                createToast('error', 'Error deleting table')
+            }
         })
     }
 
@@ -325,10 +326,60 @@ class ShoesController {
         tableRows.forEach(row => {
             row.addEventListener('click', e => {
                 const productId = e.target.closest('.product-row').id;
+                const {target} = e
+                if(target.closest('.stock-wrapper')){
+                    e.stopPropagation();
+                    this.switchStatus(productId, target)
+                    return
+                }
+
+                if (target.closest('.product-checkbox')) return
                 window.location.href = `/product/detail?productId=${productId}`;
             })
         })
     }     
+    
+    async loadShoesSelected() {
+        try {
+            const params = new URLSearchParams(window.location.search)
+            const productId = params.get('productId')
+            const shoes = await this.userService.getShoes(productId);
+            console.log(shoes);
+            document.getElementById('name').value = shoes.name;
+            document.getElementById('description').value = shoes.description;
+            document.getElementById('category').value = shoes.category;
+            document.getElementById('brand').value = shoes.brand;
+            document.getElementById('sku-id').value = shoes.id;
+            document.getElementById('amount').value = shoes.amount;
+            document.getElementById('price').value = shoes.price;
+            document.getElementById('sale-price').value = shoes.salePrice;
+            const imagePreview = document.querySelectorAll(".img-preview");
+            imagePreview.forEach(img => {
+                img.src = shoes.image;
+            })
+
+        } catch(err){
+            // createToast('error', 'Error loading selected shoes');
+        }
+    }
+
+
+    switchStatus(productId, target){
+        const dot = target.querySelector('span')
+        const status = target.querySelector('p')
+
+
+        if(status.innerText === 'Sold out'){
+            status.innerText = 'Stock';
+            dot.className = 'stock';
+            this.userService.updateStatus(productId, true);
+        } else{
+            status.innerText = 'Sold out';
+            dot.className = 'sold-out';
+            this.userService.updateStatus(productId, false);
+        }
+
+    }
 }
 
 export default ShoesController

@@ -67,6 +67,7 @@ table {
       height: 10px;
       border-radius: 50%;
       background-color: $blue-color;
+      pointer-events: none;
     }
 
     .sold-out {
@@ -74,6 +75,7 @@ table {
       width: 10px;
       height: 10px;
       border-radius: 50%;
+      pointer-events: none;
       background-color: $yellow-color;
     }
   }
@@ -83,6 +85,10 @@ table {
   display: inline-flex;
   gap: 10px;
   align-items: center;
+
+  p {
+    pointer-events: none;
+  }
 }
 
 .table-title {
