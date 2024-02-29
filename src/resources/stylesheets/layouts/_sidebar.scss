@@ -1,6 +1,6 @@
 @use '../abstracts/' as *;
 .sidebar {
-  padding: pxToRem(32) pxToRem(24);
+  padding: pxToRem(32) pxToRem(16);
 
   @media screen and (max-width: 820px) {
     width: pxToRem(100);
@@ -20,7 +20,7 @@
     }
   }
   &__menu {
-    @include flex(flex, column, center, center);
+    @include flex(flex, column, false, center);
     gap: 16px;
     margin-bottom: pxToRem(32);
     &--item {
@@ -28,23 +28,38 @@
       @include font($primary-font, 14px, 700);
       @include flex(flex, row, center);
       gap: 8px;
+      text-decoration: none;
       p {
         text-transform: uppercase;
         @media screen and (max-width: 820px) {
           display: none;
         }
       }
-      #para {
-        color: $white-color;
-      }
-
       @media screen and (max-width: 540px) {
         padding: 8px;
       }
+      .white {
+        display: none;
+      }
+      &:hover {
+        img {
+          display: none;
+        }
+        img.white {
+          display: block;
+        }
+      }
     }
-    #item {
+    :hover {
       border-radius: 8px;
       background-color: $blue-color;
+      color: $white-color;
+    }
+  }
+  .icon {
+    stroke: #000;
+    &.white {
+      stroke: white;
     }
   }
   &__category {

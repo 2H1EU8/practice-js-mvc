@@ -6,18 +6,21 @@ const SideBar = () => {
         </figure>
 
         <div class="sidebar__menu">
-          <div class="sidebar__menu--item">
-            <img src="/dashboaard.6c717686.svg" alt="" />
+          <a href="/dashboard" class="sidebar__menu--item">
+            <img src="/dashboaard.6c717686.svg" alt="" class="icon" />
+            <img class="icon white" src="/dashboard-white.c512d05a.svg" alt="" />
             <p>dashboard</p>
-          </div>
-          <div class="sidebar__menu--item">
+          </a>
+          <a href="/product/all" class="sidebar__menu--item">
             <img src="/all-products.897c51a3.svg" alt="" />
+            <img class="white" src="/all-products-white.3ef31713.svg" alt="" />
             <p>all products</p>
-          </div>
-          <div id="item" class="sidebar__menu--item">
+          </a>
+          <a href="/product/table" class="sidebar__menu--item">
             <img src="/product-list.7f703628.svg" alt="" />
-            <p id="para">product list</p>
-          </div>
+            <img class="white" src="/product-list-white.7a51d84c.svg" alt="" />
+            <p>product list</p>
+          </a>
         </div>
 
         <div class="sidebar__category">
@@ -25,7 +28,7 @@ const SideBar = () => {
           <img src="/chevron_down-big.30530540.svg" alt="" />
         </div>
       </section>
-    `
-}
+    `;
+};
 
-export default SideBar
+export default SideBar;

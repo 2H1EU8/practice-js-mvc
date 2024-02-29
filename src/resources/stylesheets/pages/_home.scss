@@ -8,12 +8,11 @@
 .main {
   max-width: pxToRem(1180);
   overflow-x: auto;
+  flex-grow: 1;
 }
 
 .body__footer {
   background-color: $gray;
   padding: 24px 24px;
-
-  @include responsive('small') {
-  }
+  width: 100%;
 }

@@ -19,6 +19,7 @@ class ShoesController {
         this.cancelShoes()
         this.handleSearch()
         this.loadShoesSelected()
+        this.ProductAll()
 
         const storedUser = localStorage.getItem('users');
         const user = storedUser ? JSON.parse(storedUser) : null;
@@ -343,6 +344,7 @@ class ShoesController {
         try {
             const params = new URLSearchParams(window.location.search)
             const productId = params.get('productId')
+            if (!productId) return 
             const shoes = await this.userService.getShoes(productId);
             console.log(shoes);
             document.getElementById('name').value = shoes.name;
@@ -367,8 +369,6 @@ class ShoesController {
     switchStatus(productId, target){
         const dot = target.querySelector('span')
         const status = target.querySelector('p')
-
-
         if(status.innerText === 'Sold out'){
             status.innerText = 'Stock';
             dot.className = 'stock';
@@ -378,7 +378,14 @@ class ShoesController {
             dot.className = 'sold-out';
             this.userService.updateStatus(productId, false);
         }
+    }
 
+    ProductAll(){
+        const btn = document.querySelector('.btn');
+        console.log(btn);
+        btn.addEventListener('click', (e)=> {
+        window.location.pathname = 'product/detail';
+        });
     }
 }
 
