@@ -2,7 +2,7 @@ const TableRow = (row) => {
   return `
     <tr class="product-row" id="${row.id}">
       <td>
-        <input type="checkbox" id="checkbox-${row.id}" class="product-checkbox"  />
+        <input type="checkbox" id="checkbox" class="product-checkbox"  />
       </td>
       <td>${row.name}</td>
       <td>${row.id}</td>

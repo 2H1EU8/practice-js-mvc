@@ -10,7 +10,8 @@
       "amount": "445",
       "price": "345",
       "description": "efffffff",
-      "salePrice": "36464"
+      "salePrice": "36464",
+      "true": ""
     },
     {
       "image": "/avt-2.3bdfd00a.jpg",
@@ -54,7 +55,7 @@
       "brand": "Bressi Cooper",
       "name": "adidas",
       "category": "PayPal",
-      "status": false,
+      "status": true,
       "amount": 70,
       "price": 169,
       "description": "abcde",
@@ -113,7 +114,7 @@
       "brand": "day la dat",
       "name": "dattt",
       "category": "fsf",
-      "status": "",
+      "status": true,
       "image": "https://i.ibb.co/p19TCHV/dat.jpg",
       "amount": "3",
       "price": "3",
@@ -137,7 +138,7 @@
       "brand": "Senaetr",
       "name": "do homework part 2",
       "category": "sg 5 ",
-      "status": "",
+      "status": true,
       "image": "https://i.ibb.co/kcpNzhH/Screenshot-from-2024-02-22-13-44-12.png",
       "amount": "99",
       "price": "499",
@@ -173,36 +174,12 @@
       "brand": "ios",
       "name": "iphone 14 promax",
       "category": "phone",
-      "status": "",
+      "status": false,
       "image": "https://i.ibb.co/3R370K0/ip14-black.webp",
       "amount": "40",
       "price": "$910",
       "salePrice": "$870",
       "description": "one of the most famous products attracts people\nram 8gb "
-    },
-    {
-      "id": 100,
-      "brand": "rg r4",
-      "name": "wfq",
-      "category": "weggw 3",
-      "status": "",
-      "image": "https://i.ibb.co/TKNHTQG/Screenshot-from-2024-02-24-20-50-40.png",
-      "amount": "1",
-      "price": "1",
-      "salePrice": "1",
-      "description": "wrqrrrr"
-    },
-    {
-      "id": 233,
-      "brand": "afllf 5",
-      "name": "ma",
-      "category": "fell5",
-      "status": "",
-      "image": "https://i.ibb.co/Yk4HSZs/Screenshot-from-2024-02-25-01-11-21.png",
-      "amount": "3",
-      "price": "3",
-      "salePrice": "3",
-      "description": "efq f"
     }
   ],
   "users": [

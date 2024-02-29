@@ -27,7 +27,7 @@ class ShoesView {
     this.router.define('/register', registerForm())
     this.router.define('/login', loginForm())
     this.router.define('/product/table', this.ProductTable())
-    this.router.define('/product/detail', this.ProductDetail())
+    this.router.define('/product/detail', this.ProductDetail(), ['productId'])
     this.router.define('/change-password', changePassword())
     
     this.router.listen()
@@ -72,7 +72,7 @@ class ShoesView {
     main.appendChild(bodyFooter);
     
     bodyFooter.innerHTML += ProductHeader_2();
-    bodyFooter.innerHTML   += ProductDetail();
+    bodyFooter.innerHTML += ProductDetail();
     bodyFooter.innerHTML += Footer();
     
     return container
@@ -80,11 +80,14 @@ class ShoesView {
 
   bindTable(shoes) {
     const table = document.querySelector('.table-content table')
+    if (!table) return
+
     const tableBody = table.querySelector('tbody')
     if (shoes && shoes.length) {
       tableBody.innerHTML = TableBody(shoes)
     }
     else {
+      tableBody.innerHTML = ''
       const row = document.createElement('tr')
       const cell = document.createElement('td')
       cell.setAttribute('colspan', '8')

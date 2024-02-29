@@ -67,10 +67,18 @@ class ShoesService{
                 return this.shoes
             }
         } catch (error) {
-            createToast('error', 'Error fetching shoes');
+            createToast('error', 'Error fetching all shoes');
         }
     }
 
+    async getShoes(id) {
+        try {
+            const { data } = await config.get(`/shoes`, { params: { id } });
+            return data[0];
+        } catch (error) {
+            createToast('error', 'Error fetching shoes by id');
+        }
+    }
 
     async addShoes(shoes){
         try {
@@ -118,9 +126,18 @@ class ShoesService{
                     q: name
                 }
             });
+
             return data;
         } catch (error) {
             createToast('error', 'Error searching shoes');
+        }
+    }
+
+    async updateStatus(id, status){
+        try {
+            await config.patch(`/shoes/${id}`, {status});
+        } catch(err){
+            createToast('error', 'Error updating status');
         }
     }
 }

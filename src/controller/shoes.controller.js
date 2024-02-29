@@ -16,13 +16,15 @@ class ShoesController {
         this.getTable()
         this.updateTable()
         this.deleteTable()
+        this.cancelShoes()
         this.handleSearch()
+        this.loadShoesSelected()
 
         const storedUser = localStorage.getItem('users');
         const user = storedUser ? JSON.parse(storedUser) : null;
         this.bindNotification(user.notifications);
         
-    }
+    }   
 
     login() {
         this.formLogin = document.querySelector('.form__right');
@@ -147,7 +149,7 @@ class ShoesController {
         const image = document.getElementById("imageUpload");
         const imagePreview = document.querySelectorAll(".img-preview");
 
-        image.addEventListener("change", (e) => {
+        image?.addEventListener("change", (e) => {
             console.log(e);
             if (e.target.files.length) {
                 const src = URL.createObjectURL(e.target.files[0]);
@@ -156,7 +158,7 @@ class ShoesController {
                 })
             }
         });
-        addShoes.addEventListener('click', async (e) => {
+        addShoes?.addEventListener('click', async (e) => {
             const name = document.getElementById('name').value;
             const description = document.getElementById('description').value;
             const category = document.getElementById('category').value;
@@ -212,13 +214,13 @@ class ShoesController {
         const updateNoti = document.querySelector(".noti-list");
         const notiList = notification.map(noti =>{
             return `<p class="noti-para">${noti}</p>`
-        }).join()
+        }).join('')
         updateNoti.innerHTML = notiList;
     }
 
     updateTable() {
         const updateShoes = document.getElementById('btn-update');
-        updateShoes.addEventListener('click', (e)=>{
+        updateShoes?.addEventListener('click', (e)=>{
             const name = document.getElementById('name').value;
             const description = document.getElementById('description').value;
             const category = document.getElementById('category').value;
@@ -258,38 +260,56 @@ class ShoesController {
 
     deleteTable(){
         const deleteShoes = document.getElementById('btn-delete');
-        deleteShoes.addEventListener('click', (e)=>{
+        deleteShoes?.addEventListener('click', (e)=>{
             const id = +document.getElementById('sku-id').value;    
-            // if(validateShoes()){
+            if(validateShoes()){
                 this.userService.deleteShoes(id);
                 createToast('info', 'Delete shoes succesfully')
                 setTimeout(()=>{
                     window.location.href = '/product/table';
                 }, 3000)
                 
-            // }
-            // else {
-            //     createToast('error', 'Error deleting table')
-            // }
+            }
+            else {
+                createToast('error', 'Error deleting table')
+            }
         })
+    }
+
+    cancelShoes(){
+        const cancelShoes = document.getElementById('btn-cancel');
+        if (cancelShoes) {
+            cancelShoes.addEventListener('click', (e) => {
+                this.resetForm();
+            });
+        }
+    }
+
+    resetForm(){
+        const inputs = document.querySelectorAll('.restore-value');
+        inputs.forEach(input => {
+            if (!input.dataset.oldValue){
+                input.dataset.oldValue = input.value;
+            }
+            input.placeholder = input.dataset.oldValue || "Fill in here";
+        });
     }
 
     handleSearch(){
         const searchIcon = document.getElementById("searchIcon");
         const searchBoxLayout = document.querySelector(".header__search--input");
         const searchInput = document.getElementById("searchInput");
-        console.log(searchInput);
+
         searchIcon.addEventListener('click', () => {
             searchBoxLayout.classList.toggle('show');
         });
 
-        searchInput.addEventListener('input', (event) => {
+        searchInput.addEventListener('input', async (event) => {
             const searchTerm = event.target.value.trim();
-            if (searchTerm.length > 0) {
-                this.userService.searchShoes(searchTerm);
-                this.userView.bindTable(this.userService.searchShoes(searchTerm));
-            } else {
-                console.log('Please enter keyword to find.');
+            
+            if (searchTerm) {
+                const data = await this.userService.searchShoes(searchTerm);
+                this.userView.bindTable(data);
             }
         });
     }
@@ -305,11 +325,61 @@ class ShoesController {
         const tableRows = document.querySelectorAll('.product-row');
         tableRows.forEach(row => {
             row.addEventListener('click', e => {
-                this.id = e.target.closest('.product-row').id;
-                window.location.href = '/product/detail';
+                const productId = e.target.closest('.product-row').id;
+                const {target} = e
+                if(target.closest('.stock-wrapper')){
+                    e.stopPropagation();
+                    this.switchStatus(productId, target)
+                    return
+                }
+
+                if (target.closest('.product-checkbox')) return
+                window.location.href = `/product/detail?productId=${productId}`;
             })
         })
     }     
+    
+    async loadShoesSelected() {
+        try {
+            const params = new URLSearchParams(window.location.search)
+            const productId = params.get('productId')
+            const shoes = await this.userService.getShoes(productId);
+            console.log(shoes);
+            document.getElementById('name').value = shoes.name;
+            document.getElementById('description').value = shoes.description;
+            document.getElementById('category').value = shoes.category;
+            document.getElementById('brand').value = shoes.brand;
+            document.getElementById('sku-id').value = shoes.id;
+            document.getElementById('amount').value = shoes.amount;
+            document.getElementById('price').value = shoes.price;
+            document.getElementById('sale-price').value = shoes.salePrice;
+            const imagePreview = document.querySelectorAll(".img-preview");
+            imagePreview.forEach(img => {
+                img.src = shoes.image;
+            })
+
+        } catch(err){
+            // createToast('error', 'Error loading selected shoes');
+        }
+    }
+
+
+    switchStatus(productId, target){
+        const dot = target.querySelector('span')
+        const status = target.querySelector('p')
+
+
+        if(status.innerText === 'Sold out'){
+            status.innerText = 'Stock';
+            dot.className = 'stock';
+            this.userService.updateStatus(productId, true);
+        } else{
+            status.innerText = 'Sold out';
+            dot.className = 'sold-out';
+            this.userService.updateStatus(productId, false);
+        }
+
+    }
 }
 
 export default ShoesController
