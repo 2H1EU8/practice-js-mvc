@@ -20,6 +20,7 @@ class ShoesController {
         this.handleSearch()
         this.loadShoesSelected()
         this.ProductAll()
+        this.handlePagination();
 
         const storedUser = localStorage.getItem('users');
         const user = storedUser ? JSON.parse(storedUser) : null;
@@ -382,10 +383,66 @@ class ShoesController {
 
     ProductAll(){
         const btn = document.querySelector('.btn');
-        console.log(btn);
-        btn.addEventListener('click', (e)=> {
+        btn?.addEventListener('click', (e)=> {
         window.location.pathname = 'product/detail';
         });
+    }
+
+    getCurrentPageFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        const currentPage = parseInt(params.get('currentPage')) || 1;
+        return currentPage;
+    }
+
+    updateURLParameter(currentPage) {
+        const params = new URLSearchParams(window.location.search);
+        params.set('currentPage', currentPage);
+        window.history.replaceState({}, '', `${window.location.pathname}?${params}`);
+    } 
+
+    async handlePagination() {
+        const itemsPerPage = 8;
+        let currentPage = this.getCurrentPageFromURL();
+        const allShoes = await this.userService.getAllShoes();
+        const totalPages = Math.ceil(allShoes.length / itemsPerPage);
+
+        const updatePage = () => {
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const shoesToShow = allShoes.slice(startIndex, endIndex);
+            this.userView.bindTable(shoesToShow);
+        };
+
+        const bindPaginationButtons = () => {
+            const paginationButtons = document.querySelectorAll('.pagination-btn');
+            paginationButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const buttonText = button.innerText.toLowerCase();
+                    if (buttonText === 'next') {
+                        if (currentPage < totalPages) {
+                            currentPage++;
+                        }
+                    } else {
+                        currentPage = parseInt(button.innerText);
+                    }
+                    updatePage();
+                    this.updateURLParameter(currentPage);
+                    toggleNextButtonVisibility(currentPage, totalPages);
+                });
+            });
+        };
+
+        const toggleNextButtonVisibility = (currentPage, totalPages) => {
+        const nextButton = document.getElementById('next');
+            if (currentPage === totalPages) {
+                nextButton.style.display = 'none';
+            } else {
+                nextButton.style.display = 'flex';
+            }
+        };
+        updatePage();
+        bindPaginationButtons();
+        toggleNextButtonVisibility(currentPage, totalPages);
     }
 }
 

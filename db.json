@@ -102,7 +102,7 @@
       "brand": "hi i love dat",
       "name": "ma",
       "category": "d",
-      "status": "",
+      "status": false,
       "image": "https://i.ibb.co/p19TCHV/dat.jpg",
       "amount": "14",
       "price": "45",
@@ -180,6 +180,30 @@
       "price": "$910",
       "salePrice": "$870",
       "description": "one of the most famous products attracts people\nram 8gb "
+    },
+    {
+      "id": 9,
+      "brand": "sdgisjg",
+      "name": "Product 9",
+      "category": "KSFJI",
+      "status": "",
+      "image": "https://i.ibb.co/TLXb8pn/xiaomi-green.webp",
+      "amount": "9",
+      "price": "9",
+      "salePrice": "9",
+      "description": "ewijwg"
+    },
+    {
+      "id": 10,
+      "brand": "snearr",
+      "name": "product 10sr",
+      "category": "la ai",
+      "status": "",
+      "image": "https://i.ibb.co/52CPDSH/xiaomi3.webp",
+      "amount": "349",
+      "price": "434",
+      "salePrice": "45",
+      "description": "dthdh"
     }
   ],
   "users": [
@@ -262,7 +286,9 @@
       "password": "Yiwei@12345",
       "id": 10,
       "notifications": [
-        "You added iphone 14 promax at 2/24/2024, 8:31:18 PM"
+        "You added iphone 14 promax at 2/24/2024, 8:31:18 PM",
+        "You added Product 9 at 3/1/2024, 6:08:38 PM",
+        "You added product 10sr at 3/1/2024, 6:09:26 PM"
       ]
     }
   ]
