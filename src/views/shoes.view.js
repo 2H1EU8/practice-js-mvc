@@ -29,6 +29,8 @@ class ShoesView {
     this.router.define('/product/table', this.ProductTable())
     this.router.define('/product/detail', this.ProductDetail(), ['productId'])
     this.router.define('/change-password', changePassword())
+    this.router.define('/dashboard', this.Dashboard())
+    this.router.define('/product/all', this.ProductAll())
     
     this.router.listen()
   }
@@ -76,6 +78,64 @@ class ShoesView {
     bodyFooter.innerHTML += Footer();
     
     return container
+  }
+
+  Dashboard() {
+    const container = document.createElement('div');
+    container.className = 'container';
+
+    const main = document.createElement('main');
+    main.className = 'main';
+
+    const bodyFooter = document.createElement('div');
+    bodyFooter.className = 'body__footer';
+
+    container.innerHTML += SideBar();
+    container.appendChild(main);
+    main.innerHTML += Header();
+    main.appendChild(bodyFooter);
+
+    const dashboardContent = document.createElement('div');
+    dashboardContent.innerText= 'No have dashboard';
+    bodyFooter.appendChild(dashboardContent);
+
+    bodyFooter.innerHTML += Footer();
+
+    return container;
+  }
+
+  ProductAll() {
+    const container = document.createElement('div');
+    container.className = 'container';
+
+    const main = document.createElement('main');
+    main.className = 'main';
+
+    const bodyFooter = document.createElement('div');
+    bodyFooter.className = 'body__footer';
+
+    container.innerHTML += SideBar();
+    container.appendChild(main);
+    main.innerHTML += Header();
+    main.appendChild(bodyFooter);
+
+    const dashboardContent = document.createElement('div');
+    const addButton = document.createElement('button');
+    addButton.className = 'btn';
+    addButton.textContent = 'Add new product';
+    addButton.style.backgroundColor = '#4a69e2';
+    addButton.style.color = '#ffffff';
+    addButton.style.padding = '10px 20px';
+    addButton.style.border = 'none';
+    addButton.style.borderRadius = '5px';
+    addButton.style.fontSize = '16px';
+    addButton.style.fontWeight = '600';
+    addButton.style.fontFamily = 'Open Sans, sans-serif';
+    dashboardContent.appendChild(addButton);
+    bodyFooter.appendChild(dashboardContent);
+    bodyFooter.innerHTML += Footer();
+    
+    return container;
   }
 
   bindTable(shoes) {
