@@ -1,5 +1,9 @@
 function randomID() {
-    const randomID = Array.from({ length: 1}, () => Math.floor(Math.random() * 3)).join('');
-    return `${randomID}`;
+    const idLength = 8;
+    let randomID = '';
+    for (let i = 0; i < idLength; i++) {
+        randomID += Math.floor(Math.random() * 10);
+    }
+    return randomID;
 }
 export default randomID;

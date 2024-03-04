@@ -38,6 +38,17 @@
       @media screen and (max-width: 540px) {
         padding: 8px;
       }
+      &.active {
+        color: $white-color;
+        background-color: $blue-color;
+        border-radius: 8px;
+        img {
+          display: none;
+        }
+        img.white {
+          display: block;
+        }
+      }
       .white {
         display: none;
       }

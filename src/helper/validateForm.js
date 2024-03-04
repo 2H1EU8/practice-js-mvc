@@ -1,29 +1,30 @@
 import { createToast } from "../views/modules/handleToast";
 
 export function validateForm(firstName = '', lastName = '', password = '', email = '') {
-    
-    const nameRegex = /^[a-zA-Z]+$/;
-    if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
-        createToast('warning', 'First name and last name should contain only characters.');
-        return false;
+  const validations = [
+      { field: firstName, regex: /^[a-zA-Z]+$/, errorMessage: 'First name should contain only characters.' },
+      { field: lastName, regex: /^[a-zA-Z]+$/, errorMessage: 'Last name should contain only characters.' },
+      { field: firstName.trim(), errorMessage: 'First name cannot be empty.' },
+      { field: lastName.trim(), errorMessage: 'Last name cannot be empty.' },
+      { field: password, regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, errorMessage: 'Password must be at least 8 characters with at least one uppercase, one lowercase, one special character, and a number.' },
+      { field: email.trim(), regex: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i, errorMessage: 'Please enter a valid email address.' }
+  ];
+  let isValid = true;
+  validations.forEach(validation => {
+    switch (true) {
+      case !validation.field:
+          createToast('warning', validation.errorMessage);
+          isValid = false;
+          break;
+      case validation.regex && !validation.regex.test(validation.field):
+          createToast('warning', validation.errorMessage);
+          isValid = false;
+          break;
+      default:
+          break;
     }
-
-    if(!firstName.trim() || !lastName.trim()) {
-        createToast('warning', 'Can not leave empty field first name or last name')
-    }
-
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if (!passwordRegex.test(password)) {
-        createToast('warning', 'Password must be at least 8 characters with at least one uppercase, one lowercase, one special character, and a number.')
-        return false;
-    }
-
-    const emailRegex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-    if (!emailRegex.test(email) || !email.trim()) {
-        createToast('warning', "Please enter a valid email address")
-        return false;
-    }
-    return true;
+  });
+    return isValid;
 }
 
 export function validateShoes(){
@@ -96,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
-
 
 function validateFormPassword() {
   const password = document.getElementById('p').value;
