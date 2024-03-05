@@ -57,6 +57,8 @@
         .noti-list {
           opacity: 1;
           display: block;
+          max-height: pxToRem(500);
+          overflow: auto;
         }
       }
     }

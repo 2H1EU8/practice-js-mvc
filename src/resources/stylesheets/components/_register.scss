@@ -62,6 +62,7 @@
       border: 1px solid $dark-gray;
       outline: none;
       padding: pxToRem(16) pxToRem(48);
+      cursor: pointer;
       @media screen and (max-width: 420px) {
         padding: 8px 16px;
       }
@@ -89,15 +90,26 @@
     &--checkbox {
       @include font($dark-gray, 16px, 600);
       @include flex(flex, row, start);
+      accent-color: $dark-gray;
       gap: 8px;
     }
 
     button {
       background-color: $dark-gray;
       color: $white-color;
+      border: none;
       border-radius: 8px;
       padding: 8px 16px;
-      @include flex(flex, row, center, space-between);
+      cursor: pointer;
+      @include flex(inline-flex, row, center, space-between);
+      @include font($primary-font, 14px, 450);
+      transition: transform 0.2s ease;
+      &:hover {
+        outline: none;
+        transform: translateX(5px);
+        background-color: $button-hover;
+        font-weight: 800;
+      }
     }
 
     @include responsive('medium') {

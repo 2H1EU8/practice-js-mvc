@@ -58,8 +58,8 @@ const registerForm = () => {
           <div class="resform__right--checkbox">
             <input type="checkbox" />
             <label for=""
-              >By clicking 'Log In' you agree to our website KicksClub Terms &
-              Conditions, Kicks Privacy Notice and Terms & Conditions.</label
+              >By clicking 'Log In' you agree to our website Kicks<u>Club Terms &
+              Conditions, Kicks Privacy Notice</u> and <u>Terms & Conditions.</u></label
             >
           </div>
 

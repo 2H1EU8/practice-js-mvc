@@ -60,6 +60,7 @@
       border: 1px solid $dark-gray;
       outline: none;
       padding: pxToRem(16) pxToRem(48);
+      cursor: pointer;
       @media screen and (max-width: 420px) {
         padding: 8px 16px;
       }
@@ -85,11 +86,19 @@
 
     button {
       background-color: $dark-gray;
+      border: none;
       color: $white-color;
       border-radius: 8px;
       padding: 8px 16px;
+      transition: transform 0.2s ease;
       @include flex(flex, row, center, space-between);
       @include font($primary-font, 14px, 500);
+      cursor: pointer;
+      &:hover {
+        transform: translateX(5px);
+        background-color: $button-hover;
+        font-weight: 800;
+      }
     }
 
     @include responsive('medium') {

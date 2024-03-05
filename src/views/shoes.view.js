@@ -9,28 +9,49 @@ import ProductHeader from './modules/ProductHeader';
 import ProductDetail from './modules/ProductDetail';
 import ProductHeader_2 from './modules/ProductHeader_2';
 import Router from '../routes';
-import TableBody from './modules/TableRow';
 import changePassword from './pages/changePassword';
+import LoginController from '../controller/login.controller';
+import LoginView from './login.view';
+import LoginService from '../services/login.service';
+import RegisterController from '../controller/register.controller';
+import RegisterView from './register.view';
+import RegisterService from '../services/register.service';
+import ProductsController from '../controller/products.controller';
+import ProductsView from './products.view';
+import ProductsService from '../services/products.service';
+import DetailController from '../controller/detail.controller';
+import DetailView from './detail.view';
+import DetailService from '../services/detail.service';
+import ChangePasswordController from '../controller/change-password.controller';
+import ChangePasswordView from './change-password.view';
+import ChangePasswordService from '../services/change-password.service';
+import AllProductsView from './all-product.view';
+import DashboardView from './dashboard.view';
 
 class ShoesView {
   constructor() {
     this.app = document.querySelector('#root');
-    this.router = new Router()  
+    this.router = new Router()
     this.initRoute()
     // add toast container
     this.toastList = document.createElement('ul');
     this.toastList.classList.add('notifications');
     this.app.appendChild(this.toastList);
+    
+    let { controller, service, view } = this.router.findRoute()
+    if (view) view = new view()
+    if (service) service = new service()
+    if (controller) controller = new controller(view, service)
   }
 
   initRoute() {
-    this.router.define('/register', registerForm())
-    this.router.define('/login', loginForm())
-    this.router.define('/product/table', this.ProductTable())
-    this.router.define('/product/detail', this.ProductDetail(), ['productId'])
-    this.router.define('/change-password', changePassword())
-    this.router.define('/dashboard', this.Dashboard())
-    this.router.define('/product/all', this.ProductAll())
+    this.router.define('/register', registerForm(), RegisterController, RegisterView, RegisterService)
+    this.router.define('/login', loginForm(), LoginController, LoginView, LoginService)
+    this.router.define('/product/table', this.ProductTable(), ProductsController, ProductsView, ProductsService)
+    this.router.define('/product/detail', this.ProductDetail(), DetailController, DetailView, DetailService, ['productId'])
+    this.router.define('/change-password', changePassword(), ChangePasswordController, ChangePasswordView, ChangePasswordService)
+    this.router.define('/dashboard', this.Dashboard(), DashboardView)
+    this.router.define('/product/all', this.ProductAll(), AllProductsView)
     
     this.router.listen()
   }
@@ -52,7 +73,7 @@ class ShoesView {
    
     bodyFooter.innerHTML += ProductHeader();
     bodyFooter.innerHTML += ShoesTable();
-    bodyFooter.innerHTML += Pagination()  ;
+    bodyFooter.innerHTML += Pagination();
     bodyFooter.innerHTML += Footer();
     
     return container
@@ -96,7 +117,7 @@ class ShoesView {
     main.appendChild(bodyFooter);
 
     const dashboardContent = document.createElement('div');
-    dashboardContent.innerText= 'No have dashboard';
+    dashboardContent.innerText= 'Coming soon';
     bodyFooter.appendChild(dashboardContent);
 
     bodyFooter.innerHTML += Footer();
@@ -134,30 +155,8 @@ class ShoesView {
     dashboardContent.appendChild(addButton);
     bodyFooter.appendChild(dashboardContent);
     bodyFooter.innerHTML += Footer();
-    
     return container;
   }
-
-  bindTable(shoes) {
-    const table = document.querySelector('.table-content table')
-    if (!table) return
-
-    const tableBody = table.querySelector('tbody')
-    if (shoes && shoes.length) {
-      tableBody.innerHTML = TableBody(shoes)
-    }
-    else {
-      tableBody.innerHTML = ''
-      const row = document.createElement('tr')
-      const cell = document.createElement('td')
-      cell.setAttribute('colspan', '8')
-      cell.setAttribute('align', 'center')
-      cell.innerText = 'No row'
-      row.appendChild(cell)
-      tableBody.appendChild(row)
-    }
-  }
 }
-
 
 export default ShoesView

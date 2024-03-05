@@ -1,10 +1,10 @@
 {
   "shoes": [
     {
-      "image": "/avt-1.3cd62d23.jpg",
+      "image": "https://i.ibb.co/4JgNKj1/xiaomi-blue.webp",
       "id": 1,
       "brand": "FEKKMR",
-      "name": "do homework part 2",
+      "name": "do homework part 3",
       "category": "rrrrrrrr 4",
       "status": false,
       "amount": "445",
@@ -182,18 +182,6 @@
       "description": "one of the most famous products attracts people\nram 8gb "
     },
     {
-      "id": 9,
-      "brand": "sdgisjg",
-      "name": "Product 9",
-      "category": "KSFJI",
-      "status": "",
-      "image": "https://i.ibb.co/TLXb8pn/xiaomi-green.webp",
-      "amount": "9",
-      "price": "9",
-      "salePrice": "9",
-      "description": "ewijwg"
-    },
-    {
       "id": 10,
       "brand": "snearr",
       "name": "product 10sr",
@@ -204,6 +192,102 @@
       "price": "434",
       "salePrice": "45",
       "description": "dthdh"
+    },
+    {
+      "id": 77,
+      "brand": "ADOfse",
+      "name": "adoeoaf",
+      "category": "Sneaker",
+      "status": "",
+      "image": "https://i.ibb.co/RNd23Ky/xiaomi-blue.webp",
+      "amount": "56",
+      "price": "$346",
+      "salePrice": "$356",
+      "description": "loaekjofjae aoejfoj"
+    },
+    {
+      "id": 45,
+      "brand": "ggb",
+      "name": "IPHONE",
+      "category": "fs",
+      "status": "",
+      "image": "https://i.ibb.co/LSyTxx0/xiaomi1.webp",
+      "amount": "44",
+      "price": "44",
+      "salePrice": "44",
+      "description": "edv"
+    },
+    {
+      "id": 78,
+      "brand": "dat 2",
+      "name": "ma",
+      "category": "dat",
+      "status": "",
+      "image": "https://i.ibb.co/Jr5Khmt/xiaomi3.webp",
+      "amount": "55",
+      "price": "55",
+      "salePrice": "55",
+      "description": "jj "
+    },
+    {
+      "id": 455,
+      "brand": "afe",
+      "name": "do homework part 2",
+      "category": "wfw",
+      "status": "",
+      "image": "https://i.ibb.co/TBPCCBk/xiaomi-green.webp",
+      "amount": "44",
+      "price": "44",
+      "salePrice": "44",
+      "description": "fwwf"
+    },
+    {
+      "id": 4554,
+      "brand": "wegWR",
+      "name": "do homework part 2",
+      "category": "qefe",
+      "status": "",
+      "image": "https://i.ibb.co/5xcJsbB/Screenshot-from-2024-03-01-18-32-38.png",
+      "amount": "34",
+      "price": "45",
+      "salePrice": "45",
+      "description": "edqf"
+    },
+    {
+      "id": 786,
+      "brand": "j8",
+      "name": "do homework part 2",
+      "category": "v7",
+      "status": "",
+      "image": "https://i.ibb.co/TBPCCBk/xiaomi-green.webp",
+      "amount": "7",
+      "price": "7",
+      "salePrice": "43",
+      "description": "juj "
+    },
+    {
+      "id": 777,
+      "brand": "ni9",
+      "name": "lap top",
+      "category": "h7",
+      "status": "",
+      "image": "https://i.ibb.co/MMnqvrz/xiaomi1.webp",
+      "amount": "66",
+      "price": "678",
+      "salePrice": "544",
+      "description": "jh8"
+    },
+    {
+      "id": 334,
+      "brand": "dat 3",
+      "name": "do homework part n",
+      "category": "Dt 346",
+      "status": "",
+      "image": "https://i.ibb.co/2dXzM3g/xiaomi-blue.webp",
+      "amount": "34345",
+      "price": "54544",
+      "salePrice": "44",
+      "description": "qefjirfj"
     }
   ],
   "users": [
@@ -283,12 +367,31 @@
       "firstName": "Thuyen",
       "lastName": "Yiwei",
       "email": "yiwei@gmail.com",
-      "password": "Yiwei@12345",
+      "password": "Yiwei@123456",
       "id": 10,
       "notifications": [
         "You added iphone 14 promax at 2/24/2024, 8:31:18 PM",
         "You added Product 9 at 3/1/2024, 6:08:38 PM",
-        "You added product 10sr at 3/1/2024, 6:09:26 PM"
+        "You added product 10sr at 3/1/2024, 6:09:26 PM",
+        "You added adoeoaf at 3/1/2024, 8:52:40 PM",
+        "You added do homework part 3 at 3/5/2024, 8:58:53 AM"
+      ]
+    },
+    {
+      "id": "30406218",
+      "firstName": "Dat",
+      "lastName": "Nguyen",
+      "email": "datn@gmail.com",
+      "password": "Dat@12345",
+      "notifications": [
+        "You added do homework part 2 at 3/3/2024, 5:17:58 PM",
+        "You added iahiah at 3/3/2024, 5:19:02 PM",
+        "You added iahiah at 3/3/2024, 5:19:03 PM",
+        "You added do homework part 2 at 3/3/2024, 5:21:36 PM",
+        "You added do homework part 2 at 3/3/2024, 5:23:11 PM",
+        "You added do homework part 2 at 3/3/2024, 5:24:07 PM",
+        "You added do homework part 2 at 3/3/2024, 5:25:45 PM",
+        "You added lap top at 3/3/2024, 5:32:35 PM"
       ]
     }
   ]
