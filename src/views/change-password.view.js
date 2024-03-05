@@ -1,8 +1,12 @@
+import validateFormPassword from "../helper/validateForm";
+import { createToast } from "./modules/handleToast";
+
 class ChangePasswordView {
     constructor() {
-        this.changePassword();
+        
     }
-    changePassword(){
+
+    changePassword(updatePassword){
         this.form = document.querySelector('form')
         this.form?.addEventListener('submit', (e) => {
             e.preventDefault()
@@ -15,12 +19,12 @@ class ChangePasswordView {
                     
             if(validateFormPassword(user.firstName, user.lastName, password, user.email)){
                 console.log(password, repassword);
-                this.userService.changePassword(user.firstName, user.lastName, repassword, user.email, user.id)
+                updatePassword(user.firstName, user.lastName, repassword, user.email, user.id)
                 .then(()=>{
                     createToast('info', 'Change password sucessfully');
                     setTimeout(()=>{
                         window.location.pathname = "/product/table"
-                    })
+                    },2000)
                 })
                 .catch((err)=>{
                     console.error(err)

@@ -1,10 +1,10 @@
 {
   "shoes": [
     {
-      "image": "/avt-1.3cd62d23.jpg",
+      "image": "https://i.ibb.co/4JgNKj1/xiaomi-blue.webp",
       "id": 1,
       "brand": "FEKKMR",
-      "name": "do homework part 2",
+      "name": "do homework part 3",
       "category": "rrrrrrrr 4",
       "status": false,
       "amount": "445",
@@ -208,10 +208,10 @@
     {
       "id": 45,
       "brand": "ggb",
-      "name": "do homework part 2",
+      "name": "IPHONE",
       "category": "fs",
       "status": "",
-      "image": "https://i.ibb.co/py6Skd4/Screenshot-from-2024-03-01-19-02-03.png",
+      "image": "https://i.ibb.co/LSyTxx0/xiaomi1.webp",
       "amount": "44",
       "price": "44",
       "salePrice": "44",
@@ -276,6 +276,18 @@
       "price": "678",
       "salePrice": "544",
       "description": "jh8"
+    },
+    {
+      "id": 334,
+      "brand": "dat 3",
+      "name": "do homework part n",
+      "category": "Dt 346",
+      "status": "",
+      "image": "https://i.ibb.co/2dXzM3g/xiaomi-blue.webp",
+      "amount": "34345",
+      "price": "54544",
+      "salePrice": "44",
+      "description": "qefjirfj"
     }
   ],
   "users": [
@@ -355,13 +367,14 @@
       "firstName": "Thuyen",
       "lastName": "Yiwei",
       "email": "yiwei@gmail.com",
-      "password": "Yiwei@12345",
+      "password": "Yiwei@123456",
       "id": 10,
       "notifications": [
         "You added iphone 14 promax at 2/24/2024, 8:31:18 PM",
         "You added Product 9 at 3/1/2024, 6:08:38 PM",
         "You added product 10sr at 3/1/2024, 6:09:26 PM",
-        "You added adoeoaf at 3/1/2024, 8:52:40 PM"
+        "You added adoeoaf at 3/1/2024, 8:52:40 PM",
+        "You added do homework part 3 at 3/5/2024, 8:58:53 AM"
       ]
     },
     {

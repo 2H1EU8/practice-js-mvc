@@ -5,6 +5,8 @@ class ProductsController {
 
         this.showTable()
         this.searchShoes()
+
+        this.view.logout()
     }
 
     async showTable() {

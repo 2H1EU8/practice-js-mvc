@@ -20,21 +20,11 @@ class LoginView {
 
             try {
                 const users = await getUser(email, password);
-
                 if (users) {
-
                     const {password, ...others} = users
-
                     console.log(others);
-
                     localStorage.setItem('users', JSON.stringify(others));
-                    
-                    createToast('info', 'Login successfully');
-
-                    setTimeout(()=>{
-                        window.location.href = '/product/table';
-                    }, 5000);
-
+                    window.location.href = '/product/table';
                 } else {
                     createToast('error', 'User not found')
                 }

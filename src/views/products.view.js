@@ -169,6 +169,22 @@ class ProductsView {
             }, delay);
         };
     }
+
+    logout() {
+        this.selects = document.querySelector('.header__select')
+        this.selects?.addEventListener('change', (e) => {
+            const {value} = e.target
+
+            if (value === 'logout') {
+                localStorage.removeItem('users')
+                window.location.pathname = '/login'
+            }
+
+            if(value === 'changePassword'){
+                window.location.pathname = '/change-password'
+            }
+        })
+    }
 }
 
 export default ProductsView

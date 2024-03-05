@@ -89,12 +89,11 @@ class DetailView {
         deleteShoesButton?.addEventListener('click', async ()=>{
             const id = Number(document.getElementById('sku-id').value);    
             if(validateShoes()){
-            deleteShoes(id);
+                deleteShoes(id);
                 createToast('info', 'Delete shoes succesfully')
                 setTimeout(()=>{
                     window.location.href = '/product/table';
                 }, 3000)
-                
             }
             else {
                 createToast('error', 'Error deleting table')
@@ -123,7 +122,7 @@ class DetailView {
 
     updateShoes(update) {
         const updateShoesButton = document.getElementById('btn-update');
-        updateShoesButton?.addEventListener('click', (e)=>{
+        updateShoesButton?.addEventListener('click',() =>{
             const name = document.getElementById('name').value;
             const description = document.getElementById('description').value;
             const category = document.getElementById('category').value;
@@ -150,9 +149,9 @@ class DetailView {
                 .then((imageUrl) => {
                     update(id, new Shoes({id, brand, category, description, name, amount, price, salePrice, image: imageUrl}));
                     createToast('info', 'Update shoes succesfully')
-                    // setTimeout(()=>{
-                    //     window.location.href = '/product/table';
-                    // }, 3000)
+                    setTimeout(()=>{
+                        window.location.href = '/product/table';
+                    }, 2000);
                 })
             }
             else {

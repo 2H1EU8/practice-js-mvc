@@ -1,11 +1,11 @@
 class ChangePasswordController {
     constructor(view, service) {
-        this.service = service
         this.view = view
+        this.service = service
         this.changePassword()
     }
     changePassword(){
-        this.view.changePassword(this.service.changePasword)
+        this.view.changePassword(this.service.changePassword)
     }
 }
 
