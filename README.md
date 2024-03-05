@@ -53,6 +53,8 @@ Route: http://localhost:1234/register
        http://localhost:1234/login
        http://localhost:1234/product/table
        http://localhost:1234/product/detail
+       http://localhost:1234/product/all
+       http://localhost:1234/dashboard
        http://localhost:1234/change-password
        
 ```
