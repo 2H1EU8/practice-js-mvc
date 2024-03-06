@@ -26,13 +26,12 @@ class DetailView {
             imagePreview.forEach(img => {
                 img.src = shoes.image;
             })
-
         } catch(err){
             // createToast('error', 'Error loading selected shoes');
         }
     }
 
-    async bindAddShoes(addShoes, addNoti) {
+    async bindAddShoes(addShoes, addNoti, getShoes) {
         const addShoesButton = document.getElementById('btn-add')
         addShoesButton?.addEventListener('click', async () => {
             const name = document.getElementById('name').value;
@@ -44,8 +43,14 @@ class DetailView {
             const price = document.getElementById('price').value;
             const salePrice = document.getElementById('sale-price').value;
             const image = document.getElementById("imageUpload");
-            
-            if (validateShoes()) {
+            const productForm = document.querySelector('.product__form')
+            if (validateShoes(productForm)) {
+                const data =  await getShoes(id);
+                console.log(data);
+                if(data){
+                    createToast('error', 'ID already existed');
+                    return 
+                }
                 var form = new FormData();
                 form.append("image", image.files[0])
                 
@@ -78,8 +83,8 @@ class DetailView {
                     addNoti(user.id, user.notifications);
                     localStorage.setItem('users', JSON.stringify(user));
                 })
-            } else {
-                createToast('error', 'Error')
+            }else{
+                createToast('error', 'Error adding shoes');
             }
         })
     }
@@ -88,15 +93,13 @@ class DetailView {
         const deleteShoesButton = document.getElementById('btn-delete');
         deleteShoesButton?.addEventListener('click', async ()=>{
             const id = Number(document.getElementById('sku-id').value);    
-            if(validateShoes()){
+            const productForm = document.querySelector('.product__form')
+            if(validateShoes(productForm)){
                 deleteShoes(id);
                 createToast('info', 'Delete shoes succesfully')
                 setTimeout(()=>{
                     window.location.href = '/product/table';
                 }, 3000)
-            }
-            else {
-                createToast('error', 'Error deleting table')
             }
         })
     }
@@ -132,8 +135,9 @@ class DetailView {
             const price = document.getElementById('price').value;
             const salePrice = document.getElementById('sale-price').value;
             const image = document.getElementById("imageUpload");
+            const productForm = document.querySelector('.product__form')
 
-            if(validateShoes()){
+            if(validateShoes(productForm)){
                 var form = new FormData();
                 form.append("image", image.files[0])
                 

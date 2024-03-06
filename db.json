@@ -280,14 +280,26 @@
     {
       "id": 334,
       "brand": "dat 3",
-      "name": "do homework part n",
+      "name": "do homework part 4",
       "category": "Dt 346",
       "status": "",
-      "image": "https://i.ibb.co/2dXzM3g/xiaomi-blue.webp",
+      "image": "https://i.ibb.co/LkxVQ8f/xiaomi-green.webp",
       "amount": "34345",
       "price": "54544",
       "salePrice": "44",
       "description": "qefjirfj"
+    },
+    {
+      "id": 788,
+      "brand": "Addias",
+      "name": "Sneaker",
+      "category": "Addidas",
+      "status": "",
+      "image": "https://i.ibb.co/rHK0KBD/Screenshot-from-2024-03-06-02-35-23.png",
+      "amount": "33",
+      "price": "23",
+      "salePrice": "33",
+      "description": "Super vippro from"
     }
   ],
   "users": [
@@ -374,7 +386,11 @@
         "You added Product 9 at 3/1/2024, 6:08:38 PM",
         "You added product 10sr at 3/1/2024, 6:09:26 PM",
         "You added adoeoaf at 3/1/2024, 8:52:40 PM",
-        "You added do homework part 3 at 3/5/2024, 8:58:53 AM"
+        "You added do homework part 3 at 3/5/2024, 8:58:53 AM",
+        "You added Sneaker at 3/6/2024, 6:59:41 PM",
+        "You added Sneaker at 3/6/2024, 7:00:23 PM",
+        "You added Sneaker at 3/6/2024, 7:00:55 PM",
+        "You added do homework part 2 at 3/6/2024, 7:19:15 PM"
       ]
     },
     {
