@@ -24,30 +24,99 @@ export function validateForm(firstName = '', lastName = '', password = '', email
           break;
     }
   });
-    return isValid;
+  return isValid;
 }
 
-export function validateShoes(){
-  const name = document.getElementById('name').value;
-  const description = document.getElementById('description').value;
-  const category = document.getElementById('category').value;
-  const brand = document.getElementById('brand').value;
-  const id = +document.getElementById('sku-id').value;
-  const amount = document.getElementById('amount').value;
-  const price = document.getElementById('price').value;
-  const salePrice = document.getElementById('sale-price').value;
+const inputValidationRules = {
+  name: /.+/,
+  description: /.+/,
+  category: /.+/,
+  brand: /.+/,
+  'sku-id': /^\d+$/,
+  amount: /^\d+$/,
+  price: /^\d+(\.\d{1,2})?$/,
+  'sale-price': /^\d+(\.\d{1,2})?$/,
+};
 
-  const numericRegex = /^\d+$/;
-  if(!numericRegex.test(id) || (!numericRegex.test(amount))){
-    createToast('warning','Please enter number, can not use characters');
-    return false;
-  }
+const inputCollection = {
+  name: 'Name',
+  description: 'Description',
+  category: 'Category',
+  brand: 'Brand',
+  'sku-id': 'ID',
+  amount: 'Amount',
+  price: 'Price',
+  'sale-price': 'Sale Price',
+};
 
-  if(!name.trim()||!description.trim() || !category.trim() || !brand.trim() || !amount.trim() || !price.trim() || !salePrice.trim()){
-    createToast('warning','Please enter all fields in product detail');
-    return false;
+const errorMsg = {
+  require: ' cannot be empty!',
+  invalid: 'please enter valid ',
+  tooShort: ' must be longer than 5 characters.',
+  negativeNum: 'value must be greater than 0.',
+};
+
+const handleValidate = (input, condition, injectClass) => {
+  if (condition) {
+    input.classList.remove(injectClass);
+  } else {
+    input.classList.add(injectClass);
   }
-  return true;
+};
+
+const checkInput = (e, eventType) => {
+  const inputTarget = e.target;
+  const inputValue = e.target.value;
+  const inputName = e.target.id;
+
+  switch (eventType) {
+    case 'focus': {
+      handleValidate(inputTarget, true, 'invalid');
+      break;
+    }
+    case 'blur': {
+      const inputValidate = inputValidationRules[inputName].test(inputValue);
+      if (inputValue.trim().length === 0) {
+        createToast('warning', inputCollection[inputName] + errorMsg.require);
+        handleValidate(inputTarget, false, 'invalid');
+      } else if (inputName === 'amount' || inputName === 'price' || inputName === 'sale-price' || inputName === 'sku-id') {
+        if (isNaN(parseFloat(inputValue)) || parseFloat(inputValue) <= 0) {
+          createToast('warning', errorMsg.negativeNum);
+          handleValidate(inputTarget, false, 'invalid');
+        } else {
+          handleValidate(inputTarget, true, 'invalid');
+        }
+      } else {
+        if (inputValue.length < 5) {
+          createToast('warning', inputCollection[inputName] + errorMsg.tooShort);
+          handleValidate(inputTarget, false, 'invalid');
+        } else if (!inputValidate) {
+          createToast('warning', errorMsg.invalid + inputCollection[inputName]);
+          handleValidate(inputTarget, inputValidate, 'invalid');
+        } else {
+          handleValidate(inputTarget, true, 'invalid');
+        }
+      }
+      break;
+    }
+    default:
+      break;
+  }
+};
+
+
+
+export function validateShoes(form) {
+  const inputs = form.querySelectorAll('.restore-value');
+  let isValid = true;
+  inputs.forEach((input) => {
+    checkInput({ target: input }, 'blur');
+    if (input.classList.contains('invalid')) {
+      isValid = false;
+    }
+  });
+  inputs.forEach(input => input.classList.remove('invalid'))
+  return isValid;
 }
 
 document.addEventListener('DOMContentLoaded', function () {

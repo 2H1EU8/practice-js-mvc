@@ -17,7 +17,7 @@ class DetailController {
     }
 
     addShoes() {
-        this.view.bindAddShoes(this.service.addShoes, this.service.addNoti)
+        this.view.bindAddShoes(this.service.addShoes, this.service.addNoti, this.service.getShoes)
     }
 
     deleteShoes() {

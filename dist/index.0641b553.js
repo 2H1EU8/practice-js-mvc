@@ -5854,25 +5854,81 @@ function validateForm(firstName = "", lastName = "", password = "", email = "") 
     });
     return isValid;
 }
-function validateShoes() {
-    const name = document.getElementById("name").value;
-    const description = document.getElementById("description").value;
-    const category = document.getElementById("category").value;
-    const brand = document.getElementById("brand").value;
-    const id = +document.getElementById("sku-id").value;
-    const amount = document.getElementById("amount").value;
-    const price = document.getElementById("price").value;
-    const salePrice = document.getElementById("sale-price").value;
-    const numericRegex = /^\d+$/;
-    if (!numericRegex.test(id) || !numericRegex.test(amount)) {
-        (0, _handleToast.createToast)("warning", "Please enter number, can not use characters");
-        return false;
+const inputValidationRules = {
+    name: /.+/,
+    description: /.+/,
+    category: /.+/,
+    brand: /.+/,
+    "sku-id": /^\d+$/,
+    amount: /^\d+$/,
+    price: /^\d+(\.\d{1,2})?$/,
+    "sale-price": /^\d+(\.\d{1,2})?$/
+};
+const inputCollection = {
+    name: "Name",
+    description: "Description",
+    category: "Category",
+    brand: "Brand",
+    "sku-id": "ID",
+    amount: "Amount",
+    price: "Price",
+    "sale-price": "Sale Price"
+};
+const errorMsg = {
+    require: " cannot be empty!",
+    invalid: "please enter valid ",
+    tooShort: " must be longer than 5 characters.",
+    negativeNum: "value must be greater than 0."
+};
+const handleValidate = (input, condition, injectClass)=>{
+    if (condition) input.classList.remove(injectClass);
+    else input.classList.add(injectClass);
+};
+const checkInput = (e, eventType)=>{
+    const inputTarget = e.target;
+    const inputValue = e.target.value;
+    const inputName = e.target.id;
+    switch(eventType){
+        case "focus":
+            handleValidate(inputTarget, true, "invalid");
+            break;
+        case "blur":
+            {
+                const inputValidate = inputValidationRules[inputName].test(inputValue);
+                if (inputValue.trim().length === 0) {
+                    (0, _handleToast.createToast)("warning", inputCollection[inputName] + errorMsg.require);
+                    handleValidate(inputTarget, false, "invalid");
+                } else if (inputName === "amount" || inputName === "price" || inputName === "sale-price" || inputName === "sku-id") {
+                    if (isNaN(parseFloat(inputValue)) || parseFloat(inputValue) <= 0) {
+                        (0, _handleToast.createToast)("warning", errorMsg.negativeNum);
+                        handleValidate(inputTarget, false, "invalid");
+                    } else handleValidate(inputTarget, true, "invalid");
+                } else {
+                    if (inputValue.length < 5) {
+                        (0, _handleToast.createToast)("warning", inputCollection[inputName] + errorMsg.tooShort);
+                        handleValidate(inputTarget, false, "invalid");
+                    } else if (!inputValidate) {
+                        (0, _handleToast.createToast)("warning", errorMsg.invalid + inputCollection[inputName]);
+                        handleValidate(inputTarget, inputValidate, "invalid");
+                    } else handleValidate(inputTarget, true, "invalid");
+                }
+                break;
+            }
+        default:
+            break;
     }
-    if (!name.trim() || !description.trim() || !category.trim() || !brand.trim() || !amount.trim() || !price.trim() || !salePrice.trim()) {
-        (0, _handleToast.createToast)("warning", "Please enter all fields in product detail");
-        return false;
-    }
-    return true;
+};
+function validateShoes(form) {
+    const inputs = form.querySelectorAll(".restore-value");
+    let isValid = true;
+    inputs.forEach((input)=>{
+        checkInput({
+            target: input
+        }, "blur");
+        if (input.classList.contains("invalid")) isValid = false;
+    });
+    inputs.forEach((input)=>input.classList.remove("invalid"));
+    return isValid;
 }
 document.addEventListener("DOMContentLoaded", function() {
     // Password strength check
@@ -6188,7 +6244,7 @@ class DetailController {
         this.view.loadShoesSelected(this.service.getShoes);
     }
     addShoes() {
-        this.view.bindAddShoes(this.service.addShoes, this.service.addNoti);
+        this.view.bindAddShoes(this.service.addShoes, this.service.addNoti, this.service.getShoes);
     }
     deleteShoes() {
         this.view.bindDeleteShoes(this.service.deleteShoes);
@@ -6233,7 +6289,7 @@ class DetailView {
         // createToast('error', 'Error loading selected shoes');
         }
     }
-    async bindAddShoes(addShoes, addNoti) {
+    async bindAddShoes(addShoes, addNoti, getShoes) {
         const addShoesButton = document.getElementById("btn-add");
         addShoesButton?.addEventListener("click", async ()=>{
             const name = document.getElementById("name").value;
@@ -6245,7 +6301,14 @@ class DetailView {
             const price = document.getElementById("price").value;
             const salePrice = document.getElementById("sale-price").value;
             const image = document.getElementById("imageUpload");
-            if ((0, _validateForm.validateShoes)()) {
+            const productForm = document.querySelector(".product__form");
+            if ((0, _validateForm.validateShoes)(productForm)) {
+                const data = await getShoes(id);
+                console.log(data);
+                if (data) {
+                    (0, _handleToast.createToast)("error", "ID already existed");
+                    return;
+                }
                 var form = new FormData();
                 form.append("image", image.files[0]);
                 fetch("https://api.imgbb.com/1/upload?key=12bf5830553fd071836060cc5f97b484", {
@@ -6283,20 +6346,21 @@ class DetailView {
                     addNoti(user.id, user.notifications);
                     localStorage.setItem("users", JSON.stringify(user));
                 });
-            } else (0, _handleToast.createToast)("error", "Error");
+            } else (0, _handleToast.createToast)("error", "Error adding shoes");
         });
     }
     bindDeleteShoes(deleteShoes) {
         const deleteShoesButton = document.getElementById("btn-delete");
         deleteShoesButton?.addEventListener("click", async ()=>{
             const id = Number(document.getElementById("sku-id").value);
-            if ((0, _validateForm.validateShoes)()) {
+            const productForm = document.querySelector(".product__form");
+            if ((0, _validateForm.validateShoes)(productForm)) {
                 deleteShoes(id);
                 (0, _handleToast.createToast)("info", "Delete shoes succesfully");
                 setTimeout(()=>{
                     window.location.href = "/product/table";
                 }, 3000);
-            } else (0, _handleToast.createToast)("error", "Error deleting table");
+            }
         });
     }
     cancelShoes() {
@@ -6324,7 +6388,8 @@ class DetailView {
             const price = document.getElementById("price").value;
             const salePrice = document.getElementById("sale-price").value;
             const image = document.getElementById("imageUpload");
-            if ((0, _validateForm.validateShoes)()) {
+            const productForm = document.querySelector(".product__form");
+            if ((0, _validateForm.validateShoes)(productForm)) {
                 var form = new FormData();
                 form.append("image", image.files[0]);
                 fetch("https://api.imgbb.com/1/upload?key=12bf5830553fd071836060cc5f97b484", {
