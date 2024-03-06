@@ -541,16 +541,26 @@ table td .sold-out {
 }
 
 .pagination button {
+  cursor: pointer;
   border: 1px solid #232321;
   border-radius: 8px;
   outline: none;
   padding: 8px 16px;
+  transition: transform .1s ease-in;
 }
 
 @media screen and (width <= 620px) {
   .pagination button {
     padding: 6px 14px;
   }
+}
+
+.pagination button:hover {
+  color: #fff;
+  background-color: #1785ec;
+  border: none;
+  font-weight: 800;
+  transform: translateY(2px);
 }
 
 @media screen and (width <= 960px) {
@@ -763,6 +773,18 @@ table td .sold-out {
   height: 64px;
 }
 
+@media screen and (width <= 380px) {
+  .product__thumbnail--list .img-preview {
+    width: 30px;
+    height: 30px;
+  }
+
+  .product__thumbnail--list img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
 .product__thumbnail--detail {
   flex-direction: column;
   gap: 16px;
@@ -779,6 +801,18 @@ table td .sold-out {
   height: 4px;
 }
 
+@media screen and (width <= 380px) {
+  .product__thumbnail--detail {
+    font-family: Open Sans, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .product__thumbnail--detail span {
+    height: 3px;
+  }
+}
+
 .product__action {
   flex-direction: row;
   align-items: center;
@@ -791,6 +825,12 @@ table td .sold-out {
     grid-gap: 25px;
     grid-template-columns: repeat(2, 1fr);
     display: grid;
+  }
+}
+
+@media screen and (width <= 400px) {
+  .product__action {
+    grid-gap: 10px;
   }
 }
 
@@ -958,11 +998,18 @@ small {
   font-family: Open Sans, sans-serif;
   font-size: 14px;
   font-weight: 600;
+  transition: transform .2s;
 }
 
 .button a {
   color: #fff;
   text-decoration: none;
+}
+
+.button:hover {
+  background-color: #1785ec;
+  font-weight: 800;
+  transform: translateY(5px);
 }
 
 .notifications {
@@ -1237,7 +1284,17 @@ small {
 
 @media screen and (width <= 654px) {
   .sidebar__logo img {
-    width: 6.25rem;
+    width: 5.625rem;
+  }
+}
+
+@media screen and (width <= 460px) {
+  .sidebar__logo {
+    padding: 0;
+  }
+
+  .sidebar__logo img {
+    width: 4.375rem;
   }
 }
 
@@ -1247,6 +1304,12 @@ small {
   gap: 16px;
   margin-bottom: 2rem;
   display: flex;
+}
+
+@media screen and (width <= 820px) {
+  .sidebar__menu {
+    width: 48px;
+  }
 }
 
 .sidebar__menu--item {
@@ -1268,12 +1331,6 @@ small {
 @media screen and (width <= 820px) {
   .sidebar__menu--item p {
     display: none;
-  }
-}
-
-@media screen and (width <= 540px) {
-  .sidebar__menu--item {
-    padding: 8px;
   }
 }
 

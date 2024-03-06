@@ -15,14 +15,23 @@
 
     @media screen and (max-width: 654px) {
       img {
-        width: pxToRem(100);
+        width: pxToRem(90);
       }
+    }
+    @media screen and (max-width: 460px) {
+      img {
+        width: pxToRem(70);
+      }
+      padding: 0;
     }
   }
   &__menu {
     @include flex(flex, column, false, center);
     gap: 16px;
     margin-bottom: pxToRem(32);
+    @media screen and (max-width: 820px) {
+      width: 48px;
+    }
     &--item {
       padding: 8px 16px;
       @include font($primary-font, 14px, 700);
@@ -34,9 +43,6 @@
         @media screen and (max-width: 820px) {
           display: none;
         }
-      }
-      @media screen and (max-width: 540px) {
-        padding: 8px;
       }
       &.active {
         color: $white-color;

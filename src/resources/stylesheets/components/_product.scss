@@ -138,6 +138,16 @@
       .img-preview {
         width: 64px;
         height: 64px;
+        @media screen and (max-width: 380px) {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      @media screen and (max-width: 380px) {
+        img {
+          width: 20px;
+          height: 20px;
+        }
       }
     }
 
@@ -152,6 +162,13 @@
         height: 4px;
         width: 100%;
       }
+
+      @media screen and (max-width: 380px) {
+        @include font($primary-font, 12px, 500);
+        span {
+          height: 3px;
+        }
+      }
     }
   }
 
@@ -163,6 +180,10 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 25px;
+    }
+
+    @media screen and (max-width: 400px) {
+      grid-gap: 10px;
     }
 
     button {

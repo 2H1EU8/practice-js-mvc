@@ -14,8 +14,18 @@
     border: none;
     outline: none;
     border: 1px solid $dark-gray;
+    cursor: pointer;
+    transition: transform 0.1s ease-in;
     @include responsive('small') {
       padding: 6px 14px;
+    }
+
+    &:hover {
+      transform: translateY(2px);
+      background-color: $button-hover;
+      font-weight: 800;
+      color: $white-color;
+      border: none;
     }
 
     @media screen and (max-width: 960px) {
