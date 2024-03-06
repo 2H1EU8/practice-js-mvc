@@ -2,7 +2,7 @@ import TableBody from "./modules/TableRow";
 
 class ProductsView {
     constructor() {
-        this.itemsPerPage = 8
+        this.itemsPerPage = 8;
         this.updateURLParameter()
         this.bindNotification()
         document.querySelector('.sidebar__menu--item:last-child').classList.add('active');
@@ -68,16 +68,25 @@ class ProductsView {
         const shoesToShow = shoes ? shoes.slice(startIndex, endIndex) : this.allShoes.slice(startIndex, endIndex);
         this.bindTable(shoesToShow)
     };
-
+    
     bindPaginationButtons = () => {
         const paginationButtons = document.querySelectorAll('.pagination-btn');
-        let currentPage = this.getCurrentPageFromURL()
-        paginationButtons.forEach(button => {
+        let currentPage = this.getCurrentPageFromURL();
+        const maxDisplayedButtons = 10;
+        let numButtonsToShow = Math.min(maxDisplayedButtons, this.totalPages);
+        if (this.totalPages <= maxDisplayedButtons) {
+            numButtonsToShow = this.totalPages;
+        }
+        paginationButtons.forEach((button, index) => {
+            if (index < numButtonsToShow) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
             button.addEventListener('click', () => {
-                
                 const buttonText = button.innerText.toLowerCase();
                 if (buttonText === 'next') {
-                    const currentButton = [...paginationButtons].findIndex(btn => btn.id === 'current')
+                    const currentButton = [...paginationButtons].findIndex(btn => btn.id === 'current');
                     paginationButtons[currentButton + 1].id = 'current';
                     paginationButtons[currentButton].id = null;
 
@@ -96,8 +105,6 @@ class ProductsView {
                 this.toggleNextButtonVisibility(currentPage, this.totalPages);
             });
         });
-
-
     };
 
     toggleNextButtonVisibility = (currentPage, totalPages) => {

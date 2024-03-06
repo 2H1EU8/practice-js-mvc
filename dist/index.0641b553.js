@@ -1577,7 +1577,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
-const host = "http://localhost:3021";
+const host = "https://json-server-0tdv.onrender.com/";
 exports.default = (0, _axiosDefault.default).create({
     baseURL: host
 });
@@ -6004,7 +6004,12 @@ class ProductsView {
     bindPaginationButtons = ()=>{
         const paginationButtons = document.querySelectorAll(".pagination-btn");
         let currentPage = this.getCurrentPageFromURL();
-        paginationButtons.forEach((button)=>{
+        const maxDisplayedButtons = 10;
+        let numButtonsToShow = Math.min(maxDisplayedButtons, this.totalPages);
+        if (this.totalPages <= maxDisplayedButtons) numButtonsToShow = this.totalPages;
+        paginationButtons.forEach((button, index)=>{
+            if (index < numButtonsToShow) button.style.display = "block";
+            else button.style.display = "none";
             button.addEventListener("click", ()=>{
                 const buttonText = button.innerText.toLowerCase();
                 if (buttonText === "next") {

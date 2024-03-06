@@ -8,6 +8,7 @@
   @media screen and (max-width: 654px) {
     gap: 20px;
   }
+
   &__search {
     @include flex(flex, row, false, center);
     gap: 10px;
