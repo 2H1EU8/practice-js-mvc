@@ -9,6 +9,11 @@
   @include responsive('small') {
     padding: 32px 12px;
   }
+
+  @media screen and (max-width: 400px) {
+    display: none;
+  }
+
   &__logo {
     padding: 0 pxToRem(42);
     margin-bottom: pxToRem(48);

@@ -1577,7 +1577,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
-const host = "https://json-server-0tdv.onrender.com/";
+// const host = 'https://json-server-0tdv.onrender.com/';
+const host = "http://localhost:3021";
 exports.default = (0, _axiosDefault.default).create({
     baseURL: host
 });

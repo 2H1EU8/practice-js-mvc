@@ -77,6 +77,22 @@ table {
       border-radius: 50%;
       pointer-events: none;
       background-color: $yellow-color;
+      @media screen and (max-width: 1128px) {
+        width: 11px;
+        height: 10px;
+      }
+      @media screen and (max-width: 890px) {
+        width: 12px;
+        height: 10px;
+      }
+      @media screen and (max-width: 705px) {
+        width: 14px;
+        height: 10px;
+      }
+      @media screen and (max-width: 670px) {
+        width: 15px;
+        height: 10px;
+      }
     }
   }
 }

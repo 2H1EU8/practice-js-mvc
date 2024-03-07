@@ -80,6 +80,11 @@
     border-radius: 8px;
     @include font($primary-font, 14px, 600);
     outline: none;
+    @media screen and (max-width: 400px) {
+      -webkit-appearance: none;
+      padding: 4px 8px;
+      text-align: center;
+    }
   }
   &__button {
     text-transform: uppercase;

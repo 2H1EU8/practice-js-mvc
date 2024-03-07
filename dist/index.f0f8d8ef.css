@@ -471,6 +471,34 @@ table td .sold-out {
   display: inline-block;
 }
 
+@media screen and (width <= 1128px) {
+  table td .sold-out {
+    width: 11px;
+    height: 10px;
+  }
+}
+
+@media screen and (width <= 890px) {
+  table td .sold-out {
+    width: 12px;
+    height: 10px;
+  }
+}
+
+@media screen and (width <= 705px) {
+  table td .sold-out {
+    width: 14px;
+    height: 10px;
+  }
+}
+
+@media screen and (width <= 670px) {
+  table td .sold-out {
+    width: 15px;
+    height: 10px;
+  }
+}
+
 .stock-wrapper {
   align-items: center;
   gap: 10px;
@@ -1244,6 +1272,14 @@ small {
   font-weight: 600;
 }
 
+@media screen and (width <= 400px) {
+  .header__select {
+    -webkit-appearance: none;
+    text-align: center;
+    padding: 4px 8px;
+  }
+}
+
 .header__button {
   text-transform: uppercase;
   background-color: #232321;
@@ -1274,6 +1310,12 @@ small {
 @media screen and (width <= 620px) {
   .sidebar {
     padding: 32px 12px;
+  }
+}
+
+@media screen and (width <= 400px) {
+  .sidebar {
+    display: none;
   }
 }
 
