@@ -748,6 +748,7 @@ class ShoesView {
         addButton.style.fontSize = "16px";
         addButton.style.fontWeight = "600";
         addButton.style.fontFamily = "Open Sans, sans-serif";
+        addButton.style.cursor = "pointer";
         dashboardContent.appendChild(addButton);
         bodyFooter.appendChild(dashboardContent);
         bodyFooter.innerHTML += (0, _footerDefault.default)();
@@ -756,7 +757,7 @@ class ShoesView {
 }
 exports.default = ShoesView;
 
-},{"./pages/registerForm":"6FLeT","./pages/loginForm":"2uMPf","./layouts/header":"1a0Jc","./layouts/sidebar":"lNs5j","./layouts/footer":"jTm6R","./modules/Pagination":"5InSg","./modules/ShoesTable":"2UUhk","./modules/ProductHeader":"jfytd","./modules/ProductDetail":"b4RPc","./modules/ProductHeader_2":"hRxfk","../routes":"hw5Qm","./pages/changePassword":"1qxxX","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../controller/login.controller":"iK1ur","./login.view":"6AVnW","../services/login.service":"2xrhV","../controller/register.controller":"jXNV5","./register.view":"eoDRm","../controller/products.controller":"cU9kd","./products.view":"j63iC","../services/products.service":"kw9FN","../controller/detail.controller":"fzYuG","./detail.view":"lrCby","../services/detail.service":"dtUqX","../controller/change-password.controller":"6rdjc","./change-password.view":"8vJKB","../services/change-password.service":"i0Dev","./dashboard.view":"8oLhU","../services/register.service":"1p8Hm","./all-product.view":"VqQ89"}],"6FLeT":[function(require,module,exports) {
+},{"./pages/registerForm":"6FLeT","./pages/loginForm":"2uMPf","./layouts/header":"1a0Jc","./layouts/sidebar":"lNs5j","./layouts/footer":"jTm6R","./modules/Pagination":"5InSg","./modules/ShoesTable":"2UUhk","./modules/ProductHeader":"jfytd","./modules/ProductDetail":"b4RPc","./modules/ProductHeader_2":"hRxfk","../routes":"hw5Qm","./pages/changePassword":"1qxxX","../controller/login.controller":"iK1ur","./login.view":"6AVnW","../services/login.service":"2xrhV","../controller/register.controller":"jXNV5","./register.view":"eoDRm","../services/register.service":"1p8Hm","../controller/products.controller":"cU9kd","./products.view":"j63iC","../services/products.service":"kw9FN","../controller/detail.controller":"fzYuG","./detail.view":"lrCby","../services/detail.service":"dtUqX","../controller/change-password.controller":"6rdjc","./change-password.view":"8vJKB","../services/change-password.service":"i0Dev","./all-product.view":"VqQ89","./dashboard.view":"8oLhU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6FLeT":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const registerForm = ()=>{
@@ -996,11 +997,12 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const SideBar = ()=>{
     return `
-    <section class="sidebar">
+    <section class="sidebar active">
         <figure class="sidebar__logo">
           <img src="/logo.3e864662.svg" alt="" />
         </figure>
 
+        <span class="menu-toggle">&equiv;</span>
         <div class="sidebar__menu">
           <a href="/dashboard" class="sidebar__menu--item">
             <img src="/dashboaard.6c717686.svg" alt="" class="icon" />
@@ -1492,7 +1494,7 @@ class LoginView {
 }
 exports.default = LoginView;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./modules/handleToast":"7KjUu"}],"7KjUu":[function(require,module,exports) {
+},{"./modules/handleToast":"7KjUu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7KjUu":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "removeToast", ()=>removeToast);
@@ -1572,7 +1574,7 @@ class LoginService {
 }
 exports.default = LoginService;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../views/modules/handleToast":"7KjUu","../api/config":"41BLM"}],"41BLM":[function(require,module,exports) {
+},{"../api/config":"41BLM","../views/modules/handleToast":"7KjUu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"41BLM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _axios = require("axios");
@@ -5801,7 +5803,7 @@ class RegisterView {
 }
 exports.default = RegisterView;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../helper/validateForm":"6npiw","./modules/handleToast":"7KjUu"}],"6npiw":[function(require,module,exports) {
+},{"../helper/validateForm":"6npiw","./modules/handleToast":"7KjUu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6npiw":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "validateForm", ()=>validateForm);
@@ -5974,7 +5976,63 @@ function validateFormPassword() {
 }
 exports.default = validateFormPassword;
 
-},{"../views/modules/handleToast":"7KjUu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cU9kd":[function(require,module,exports) {
+},{"../views/modules/handleToast":"7KjUu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1p8Hm":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _config = require("../api/config");
+var _configDefault = parcelHelpers.interopDefault(_config);
+var _handleToast = require("../views/modules/handleToast");
+var _userModel = require("../model/user.model");
+var _userModelDefault = parcelHelpers.interopDefault(_userModel);
+class RegisterService {
+    constructor(){}
+    async addUser(firstName, lastName, email, password) {
+        try {
+            const newUser = new (0, _userModelDefault.default)({
+                firstName,
+                lastName,
+                email,
+                password
+            });
+            console.log(newUser);
+            (0, _configDefault.default).post("/users", newUser);
+        } catch (error) {
+            (0, _handleToast.createToast)("error", "Error fetching user");
+            console.log(error);
+        }
+    }
+}
+exports.default = RegisterService;
+
+},{"../api/config":"41BLM","../views/modules/handleToast":"7KjUu","../model/user.model":"4C48q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4C48q":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _id = require("../helper/id");
+var _idDefault = parcelHelpers.interopDefault(_id);
+class User {
+    constructor({ firstName, lastName, email, password, notifications = [] }){
+        this.id = (0, _idDefault.default)();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.notifications = notifications;
+    }
+}
+exports.default = User;
+
+},{"../helper/id":"aQaWE","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aQaWE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function randomID() {
+    const idLength = 8;
+    let randomID = "";
+    for(let i = 0; i < idLength; i++)randomID += Math.floor(Math.random() * 10);
+    return randomID;
+}
+exports.default = randomID;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cU9kd":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class ProductsController {
@@ -5997,6 +6055,7 @@ exports.default = ProductsController;
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"j63iC":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+var _menu = require("../helper/menu");
 var _tableRow = require("./modules/TableRow");
 var _tableRowDefault = parcelHelpers.interopDefault(_tableRow);
 class ProductsView {
@@ -6005,6 +6064,7 @@ class ProductsView {
         this.updateURLParameter();
         this.bindNotification();
         document.querySelector(".sidebar__menu--item:last-child").classList.add("active");
+        (0, _menu.toggleMenu)();
     }
     bindTable(shoes) {
         const table = document.querySelector(".table-content table");
@@ -6160,7 +6220,19 @@ class ProductsView {
 }
 exports.default = ProductsView;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./modules/TableRow":"cuabV"}],"kw9FN":[function(require,module,exports) {
+},{"./modules/TableRow":"cuabV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../helper/menu":"05Jfo"}],"05Jfo":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "toggleMenu", ()=>toggleMenu);
+const toggleMenu = ()=>{
+    const menuToggleButton = document.querySelector(".menu-toggle");
+    const nav = document.querySelector(".sidebar");
+    menuToggleButton.onclick = ()=>{
+        nav.classList.toggle("active");
+    };
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kw9FN":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _config = require("../api/config");
@@ -6205,7 +6277,7 @@ class ProductsService {
 }
 exports.default = ProductsService;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../views/modules/handleToast":"7KjUu","../api/config":"41BLM","../model/shoes.model":"5T6rV"}],"5T6rV":[function(require,module,exports) {
+},{"../api/config":"41BLM","../model/shoes.model":"5T6rV","../views/modules/handleToast":"7KjUu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5T6rV":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _skuId = require("../helper/sku_id");
@@ -6269,6 +6341,7 @@ exports.default = DetailController;
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lrCby":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+var _menu = require("../helper/menu");
 var _validateForm = require("../helper/validateForm");
 var _shoesModel = require("../model/shoes.model");
 var _shoesModelDefault = parcelHelpers.interopDefault(_shoesModel);
@@ -6276,6 +6349,7 @@ var _handleToast = require("./modules/handleToast");
 class DetailView {
     constructor(){
         this.bindNotification(JSON.parse(localStorage.getItem("users")).notifications);
+        (0, _menu.toggleMenu)();
     }
     async loadShoesSelected(getShoes) {
         try {
@@ -6451,7 +6525,7 @@ class DetailView {
 }
 exports.default = DetailView;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../helper/validateForm":"6npiw","./modules/handleToast":"7KjUu","../model/shoes.model":"5T6rV"}],"dtUqX":[function(require,module,exports) {
+},{"../helper/validateForm":"6npiw","../model/shoes.model":"5T6rV","./modules/handleToast":"7KjUu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../helper/menu":"05Jfo"}],"dtUqX":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _config = require("../api/config");
@@ -6510,7 +6584,7 @@ class DetailService {
 }
 exports.default = DetailService;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../api/config":"41BLM","../views/modules/handleToast":"7KjUu"}],"6rdjc":[function(require,module,exports) {
+},{"../api/config":"41BLM","../views/modules/handleToast":"7KjUu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6rdjc":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class ChangePasswordController {
@@ -6558,7 +6632,7 @@ class ChangePasswordView {
 }
 exports.default = ChangePasswordView;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../helper/validateForm":"6npiw","./modules/handleToast":"7KjUu"}],"i0Dev":[function(require,module,exports) {
+},{"../helper/validateForm":"6npiw","./modules/handleToast":"7KjUu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i0Dev":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _config = require("../api/config");
@@ -6581,80 +6655,17 @@ class ChangePasswordService {
 }
 exports.default = ChangePasswordService;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../views/modules/handleToast":"7KjUu","../api/config":"41BLM"}],"8oLhU":[function(require,module,exports) {
+},{"../api/config":"41BLM","../views/modules/handleToast":"7KjUu","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"VqQ89":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-class DashboardView {
-    constructor(){
-        document.querySelector(".sidebar__menu--item:first-child").classList.add("active");
-    }
-}
-exports.default = DashboardView;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1p8Hm":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _config = require("../api/config");
-var _configDefault = parcelHelpers.interopDefault(_config);
-var _handleToast = require("../views/modules/handleToast");
-var _userModel = require("../model/user.model");
-var _userModelDefault = parcelHelpers.interopDefault(_userModel);
-class RegisterService {
-    constructor(){}
-    async addUser(firstName, lastName, email, password) {
-        try {
-            const newUser = new (0, _userModelDefault.default)({
-                firstName,
-                lastName,
-                email,
-                password
-            });
-            console.log(newUser);
-            (0, _configDefault.default).post("/users", newUser);
-        } catch (error) {
-            (0, _handleToast.createToast)("error", "Error fetching user");
-            console.log(error);
-        }
-    }
-}
-exports.default = RegisterService;
-
-},{"../api/config":"41BLM","../views/modules/handleToast":"7KjUu","../model/user.model":"4C48q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4C48q":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _id = require("../helper/id");
-var _idDefault = parcelHelpers.interopDefault(_id);
-class User {
-    constructor({ firstName, lastName, email, password, notifications = [] }){
-        this.id = (0, _idDefault.default)();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.notifications = notifications;
-    }
-}
-exports.default = User;
-
-},{"../helper/id":"aQaWE","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aQaWE":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-function randomID() {
-    const idLength = 8;
-    let randomID = "";
-    for(let i = 0; i < idLength; i++)randomID += Math.floor(Math.random() * 10);
-    return randomID;
-}
-exports.default = randomID;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"VqQ89":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
+var _menu = require("../helper/menu");
 class AllProductsView {
     constructor(){
         document.querySelector(".sidebar__menu--item:nth-child(2)").classList.add("active");
         this.ProductAll();
+        (0, _menu.toggleMenu)();
     }
+    "";
     ProductAll() {
         const btn = document.querySelector(".btn");
         btn?.addEventListener("click", ()=>{
@@ -6664,7 +6675,19 @@ class AllProductsView {
 }
 exports.default = AllProductsView;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iXLLn":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../helper/menu":"05Jfo"}],"8oLhU":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _menu = require("../helper/menu");
+class DashboardView {
+    constructor(){
+        document.querySelector(".sidebar__menu--item:first-child").classList.add("active");
+        (0, _menu.toggleMenu)();
+    }
+}
+exports.default = DashboardView;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../helper/menu":"05Jfo"}],"iXLLn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 class ShoesController {

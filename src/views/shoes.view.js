@@ -152,6 +152,7 @@ class ShoesView {
     addButton.style.fontSize = '16px';
     addButton.style.fontWeight = '600';
     addButton.style.fontFamily = 'Open Sans, sans-serif';
+    addButton.style.cursor = 'pointer';
     dashboardContent.appendChild(addButton);
     bodyFooter.appendChild(dashboardContent);
     bodyFooter.innerHTML += Footer();
