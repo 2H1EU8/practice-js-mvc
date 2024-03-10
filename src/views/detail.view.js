@@ -1,3 +1,4 @@
+import { toggleMenu } from "../helper/menu";
 import { validateShoes } from "../helper/validateForm";
 import Shoes from "../model/shoes.model";
 import { createToast } from "./modules/handleToast";
@@ -5,6 +6,7 @@ import { createToast } from "./modules/handleToast";
 class DetailView {
     constructor() {
         this.bindNotification(JSON.parse(localStorage.getItem('users')).notifications)
+        toggleMenu()
     }
 
     async loadShoesSelected(getShoes) {

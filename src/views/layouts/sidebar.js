@@ -1,10 +1,11 @@
 const SideBar = () => {
     return `
-    <section class="sidebar">
+    <section class="sidebar active">
         <figure class="sidebar__logo">
           <img src="/logo.3e864662.svg" alt="" />
         </figure>
 
+        <span class="menu-toggle">&equiv;</span>
         <div class="sidebar__menu">
           <a href="/dashboard" class="sidebar__menu--item">
             <img src="/dashboaard.6c717686.svg" alt="" class="icon" />

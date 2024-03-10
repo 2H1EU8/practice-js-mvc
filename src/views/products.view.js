@@ -1,3 +1,4 @@
+import { toggleMenu } from "../helper/menu";
 import TableBody from "./modules/TableRow";
 
 class ProductsView {
@@ -6,6 +7,8 @@ class ProductsView {
         this.updateURLParameter()
         this.bindNotification()
         document.querySelector('.sidebar__menu--item:last-child').classList.add('active');
+
+        toggleMenu()
     }
 
     bindTable(shoes) {
