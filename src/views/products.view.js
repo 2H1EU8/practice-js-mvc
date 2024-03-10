@@ -33,7 +33,7 @@ class ProductsView {
                 const {target} = e
                 if(target.closest('.stock-wrapper')){
                     e.stopPropagation();
-                    this.switchStatus(productId, target)
+                    this.switchStatus(productId, target, this.updateStatus)
                     return
                 }
 
@@ -43,7 +43,8 @@ class ProductsView {
         })
     }
 
-    async showTable(shoes) {
+    async showTable(shoes, updateStatus) {
+        this.updateStatus = updateStatus
         this.allShoes = shoes
         this.updatePage()
         this.handlePagination()
@@ -164,6 +165,7 @@ class ProductsView {
         }, 500);
         searchInput.addEventListener('input', debounceSearch);
     }
+
 
     debounce(func, delay) {
         let timeoutId;

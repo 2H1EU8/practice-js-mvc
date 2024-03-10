@@ -4,7 +4,7 @@
     "scripts": {
         "start": "parcel",
         "watchDB": "json-server --watch db.json --port 3021",
-        "build": "parcel build",
+        "build": "parcel build src/resources/index.html src/resources/assets/icons/* src/resources/assets/images/*",
         "prepare": "husky install",
         "pre-commit": "lint-staged"
     },

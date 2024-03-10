@@ -1,7 +1,7 @@
 {
   "shoes": [
     {
-      "image": "/avt-1.3cd62d23.jpg",
+      "image": "/dist/assets/images/avt-1.jpg",
       "id": 1,
       "brand": "Bessie Cooper",
       "name": "Adidas Ultra boost",
@@ -14,7 +14,7 @@
       "true": ""
     },
     {
-      "image": "/avt-2.3bdfd00a.jpg",
+      "image": "/dist/assets/images/avt-2.jpg",
       "id": 2,
       "brand": "Bessie Cooper",
       "name": "Adidas Ultra boost",
@@ -26,7 +26,7 @@
       "salePrice": 23
     },
     {
-      "image": "/avt-3-7.60b9b0ce.jpg",
+      "image": "/dist/assets/images/avt-3-7.jpg",
       "id": 3,
       "brand": "Bressi Cooper",
       "name": "adidas",
@@ -38,7 +38,7 @@
       "salePrice": 23
     },
     {
-      "image": "/avt-4.3ec10eec.jpg",
+      "image": "/dist/assets/images/avt-4.jpg",
       "id": 4,
       "brand": "Bressi Cooper",
       "name": "adidas",
@@ -50,7 +50,7 @@
       "salePrice": 23
     },
     {
-      "image": "/avt-5.2cf0b3dd.jpg",
+      "image": "/dist/assets/images/avt-5.jpg",
       "id": 5,
       "brand": "Bressi Cooper",
       "name": "adidas",
@@ -62,7 +62,7 @@
       "salePrice": 23
     },
     {
-      "image": "/avt-6.46dd4531.jpg",
+      "image": "/dist/assets/images/avt-6.jpg",
       "id": 6,
       "brand": "Bressi Cooper",
       "name": "adidas",
@@ -74,7 +74,7 @@
       "salePrice": 23
     },
     {
-      "image": "/avt-3-7.60b9b0ce.jpg",
+      "image": "/dist/assets/images/avt-3-7.jpg",
       "id": 7,
       "brand": "Bressi Cooper",
       "name": "adidas",
@@ -86,7 +86,7 @@
       "salePrice": 23
     },
     {
-      "image": "/avt-8.cfd948c3.jpg",
+      "image": "/dist/assets/images/avt-8.jpg",
       "id": 8,
       "brand": "Bressi Cooper",
       "name": "adidas",
@@ -379,7 +379,7 @@
       "firstName": "Thuyen",
       "lastName": "Yiwei",
       "email": "yiwei@gmail.com",
-      "password": "Yiwei@123456",
+      "password": "Yiwei@12345",
       "id": 10,
       "notifications": [
         "You added iphone 14 promax at 2/24/2024, 8:31:18 PM",

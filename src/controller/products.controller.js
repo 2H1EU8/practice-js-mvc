@@ -10,7 +10,7 @@ class ProductsController {
     }
 
     async showTable() {
-        this.view.showTable(await this.service.getAllShoes())
+        this.view.showTable(await this.service.getAllShoes(), this.service.updateStatus)
     }
 
     searchShoes() {

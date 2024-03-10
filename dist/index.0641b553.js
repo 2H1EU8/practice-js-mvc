@@ -5986,7 +5986,7 @@ class ProductsController {
         this.view.logout();
     }
     async showTable() {
-        this.view.showTable(await this.service.getAllShoes());
+        this.view.showTable(await this.service.getAllShoes(), this.service.updateStatus);
     }
     searchShoes() {
         this.view.handleSearch(this.service.searchShoes);
@@ -6028,7 +6028,7 @@ class ProductsView {
                 const { target } = e;
                 if (target.closest(".stock-wrapper")) {
                     e.stopPropagation();
-                    this.switchStatus(productId, target);
+                    this.switchStatus(productId, target, this.updateStatus);
                     return;
                 }
                 if (target.closest(".product-checkbox")) return;
@@ -6036,7 +6036,8 @@ class ProductsView {
             });
         });
     }
-    async showTable(shoes) {
+    async showTable(shoes, updateStatus) {
+        this.updateStatus = updateStatus;
         this.allShoes = shoes;
         this.updatePage();
         this.handlePagination();
@@ -6190,6 +6191,15 @@ class ProductsService {
             return data;
         } catch (error) {
             (0, _handleToast.createToast)("error", "Error searching shoes");
+        }
+    }
+    async updateStatus(productId, status) {
+        try {
+            await (0, _configDefault.default).patch(`/shoes/${productId}`, {
+                status
+            });
+        } catch (err) {
+            (0, _handleToast.createToast)("error", "Error updating status");
         }
     }
 }
@@ -6675,18 +6685,6 @@ class ShoesService {
     constructor(){
         this.user = [];
         this.shoes = [];
-    }
-    async changePassword(firstName, lastName, password, email, id) {
-        try {
-            (0, _configDefault.default).patch(`/users/${id}`, {
-                firstName,
-                lastName,
-                password,
-                email
-            });
-        } catch (err) {
-            (0, _handleToast.createToast)("error", "Error fetching password again");
-        }
     }
     async updateStatus(id, status) {
         try {

@@ -32,6 +32,14 @@ class ProductsService {
             createToast('error', 'Error searching shoes');
         }
     }
+
+    async updateStatus(productId, status){
+        try {
+            await config.patch(`/shoes/${productId}`, {status});
+        } catch(err){
+            createToast('error', 'Error updating status');
+        }
+    }
 }
 
 export default ProductsService
